@@ -48,7 +48,9 @@ public class RaymarchCamera : SceneViewFilter
     // Set the max iterations of ray travel in editor
     public int _maxIterations;
     // Set shape attributes in editor
-    public Vector4 _sphere1;
+    public Vector4 _sphere1, _box1;
+    // Mod repetition interval
+    public Vector3 _modInterval;
 
     // On render image to communicate with shader
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
@@ -70,9 +72,12 @@ public class RaymarchCamera : SceneViewFilter
         _raymarchMaterial.SetInt("_maxIterations", _maxIterations);
         // Lighting
         _raymarchMaterial.SetVector("_lightDir", _directionLight ? _directionLight.transform.forward : Vector3.down);
-        _raymarchMaterial.SetVector("_lightCol", _directionLight ? new Vector3(_directionLight.color.r, _directionLight.color.g, _directionLight.color.b) : new Vector3(1,1,1));
+        _raymarchMaterial.SetColor("_lightCol", _directionLight ?_directionLight.color : new Color(1,1,1));
         // Shapes
         _raymarchMaterial.SetVector("_sphere1", _sphere1);
+        _raymarchMaterial.SetVector("_box1", _box1);
+        // Repetition
+        _raymarchMaterial.SetVector("_modInterval", _modInterval);
 
         // Here we create the quad which represents our screen.
         // It is important that it's corner corresponds correctly to the corners of the frustum.

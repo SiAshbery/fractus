@@ -51,9 +51,11 @@
             uniform int _maxIterations;
             //lighting
             uniform float3 _lightDir;
-            uniform float3 _lightCol;
+            uniform fixed4 _lightCol;
             // Set shape attributes in editor
-            uniform float4 _sphere1;
+            uniform float4 _sphere1, _box1;
+			// Set repetation interval for modulus
+			uniform float3 _modInterval;
 
             struct appdata
             {
@@ -93,9 +95,17 @@
 
             float distanceField(float3 p)
             {
-               // p = position
-               float Sphere1 = sdSphere(p - _sphere1.xyz, _sphere1.w);
-               return Sphere1;
+				// p = position
+				// Repeat along axis:
+				// First argument is the position and is an inout which means it is changed by the function
+				// Second argument is the size of the repeated chunk and should be double the size of the shape
+				// I.E a Cube that is 2x2x2 would need a Mod size of 4 to fit perfectly into the repeation.
+				float modX = pMod1(p.x, _modInterval.x);
+				float modY = pMod1(p.y, _modInterval.y);
+				float modZ = pMod1(p.z, _modInterval.z);
+				float Sphere1 = sdSphere(p - _sphere1.xyz, _sphere1.w);
+				float Box1 = sdBox(p - _box1.xyz, _box1.www);
+				return opS(Sphere1,Box1);
             }
 
             float3 getNormal(float3 p)
@@ -168,7 +178,7 @@
                         // light!
                         // Lighting requires the dot product of the inversed lighting direction and the normal direction
                         float light = dot(-_lightDir, n);
-                        result = fixed4(_lightCol * light,1);
+                        result = fixed4(_lightCol.rgb * light,1);
                         break;
                     }
 
