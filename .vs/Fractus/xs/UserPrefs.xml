@@ -1,20 +1,20 @@
-﻿<Properties StartupConfiguration="{9ACE9981-8314-6B43-47A9-434EF2F52DBB}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Shaders/RaymarchShader.shader">
+﻿<Properties StartupConfiguration="{12C3061B-6FDE-E761-1F8B-55F779B058E9}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SceneViewFilter.cs">
     <Files>
-      <File FileName="Assets/Shaders/RaymarchShader.shader" Line="92" Column="14" />
-      <File FileName="Assets/Scripts/RaymarchCamera.cs" Line="98" Column="26" />
+      <File FileName="Assets/Shaders/RaymarchShader.shader" Line="106" Column="45" />
+      <File FileName="Assets/Scripts/RaymarchCamera.cs" />
       <File FileName="Assets/Scripts/SceneViewFilter.cs" Line="1" Column="1" />
-      <File FileName="Assets/Shaders/DistanceFunctions.cginc" Line="37" Column="46" />
+      <File FileName="Assets/Shaders/DistanceFunctions.cginc" Line="51" Column="19" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Fractus" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="Scripts" expanded="True" />
-              <Node name="Shaders" expanded="True">
-                <Node name="RaymarchShader.shader" selected="True" />
+              <Node name="Scripts" expanded="True">
+                <Node name="SceneViewFilter.cs" selected="True" />
               </Node>
+              <Node name="Shaders" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -23,7 +23,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="c2b97c1e-60c1-417e-a24e-88c567e72d26" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="b22456dc-a30f-4474-805c-91b7b9bd571d" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

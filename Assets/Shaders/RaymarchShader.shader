@@ -53,9 +53,12 @@
             uniform float3 _lightDir;
             uniform fixed4 _lightCol;
             // Set shape attributes in editor
-            uniform float4 _sphere1, _box1;
+            uniform float4 _sphere1, _box1, _recursiveTet1, _mandelBulb1, _mandelBox1;
+            uniform float _recursiveTet1Offset;
+            uniform int _recursiveTet1Iterations, _mandelBulb1Iterations, _mandelBox1Iterations;
+            uniform float _mandelBulb1Power, _mandelBulb1Bailout, _mandelBox1Scale, _mandelBox1SphereRadius;
 			// Set repetation interval for modulus
-			uniform float3 _modInterval;
+			uniform float3 _modInterval, _mandelBox1FoldLimit;
 
             struct appdata
             {
@@ -105,7 +108,10 @@
 				float modZ = pMod1(p.z, _modInterval.z);
 				float Sphere1 = sdSphere(p - _sphere1.xyz, _sphere1.w);
 				float Box1 = sdBox(p - _box1.xyz, _box1.www);
-				return opS(Sphere1,Box1);
+                return opS(Sphere1,sdMandelBox(p - _mandelBox1.xyz, _mandelBox1Iterations, _mandelBox1Scale, _mandelBox1SphereRadius, _mandelBox1FoldLimit.xyz));
+                //return sdMandelBulb(p - _mandelBulb1.xyz, _mandelBulb1Power, _mandelBulb1Bailout, _mandelBulb1Iterations);
+				//return opS(Sphere1,Box1);
+                //return sdRTet(p - _recursiveTet1.xyz, _recursiveTet1.w,_recursiveTet1Offset, _recursiveTet1Iterations);
             }
 
             float3 getNormal(float3 p)

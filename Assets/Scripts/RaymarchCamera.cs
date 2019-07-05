@@ -48,9 +48,15 @@ public class RaymarchCamera : SceneViewFilter
     // Set the max iterations of ray travel in editor
     public int _maxIterations;
     // Set shape attributes in editor
-    public Vector4 _sphere1, _box1;
+    public Vector4 _sphere1, _box1, _recursiveTet1, _mandelBulb1, _mandelBox1;
+    // float recursive tetraheddren offset
+    public float _recursiveTet1Offset;
+    // float fractal iterations
+    public int _recursiveTet1Iterations, _mandelBulb1Iterations, _mandelBox1Iterations;
+    public float _mandelBulb1Power, _mandelBulb1Bailout, _mandelBox1Scale, _mandelBox1SphereRadius;
     // Mod repetition interval
     public Vector3 _modInterval;
+    public Vector3 _mandelBox1FoldLimit;
 
     // On render image to communicate with shader
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
@@ -76,6 +82,21 @@ public class RaymarchCamera : SceneViewFilter
         // Shapes
         _raymarchMaterial.SetVector("_sphere1", _sphere1);
         _raymarchMaterial.SetVector("_box1", _box1);
+        // Recursive tetrahedron
+        _raymarchMaterial.SetVector("_recursiveTet1", _recursiveTet1);
+        _raymarchMaterial.SetFloat("_recursiveTet1Offset", _recursiveTet1Offset);
+        _raymarchMaterial.SetInt("_recursiveTet1Iterations", _recursiveTet1Iterations);
+        // Mandel Bulb
+        _raymarchMaterial.SetVector("_mandelBulb1", _mandelBulb1);
+        _raymarchMaterial.SetInt("_mandelBulb1Iterations", _mandelBulb1Iterations);
+        _raymarchMaterial.SetFloat("_mandelBulb1Power", _mandelBulb1Power);
+        _raymarchMaterial.SetFloat("_mandelBulb1Bailout", _mandelBulb1Bailout);
+        // Mandel Box
+        _raymarchMaterial.SetVector("_mandelBox1", _mandelBox1);
+        _raymarchMaterial.SetInt("_mandelBox1Iterations", _mandelBox1Iterations);
+        _raymarchMaterial.SetFloat("_mandelBox1Scale", _mandelBox1Scale);
+        _raymarchMaterial.SetVector("_mandelBox1FoldLimit", _mandelBox1FoldLimit);
+        _raymarchMaterial.SetFloat("_mandelBox1SphereRadius", _mandelBox1SphereRadius);
         // Repetition
         _raymarchMaterial.SetVector("_modInterval", _modInterval);
 
