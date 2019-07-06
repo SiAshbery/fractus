@@ -41,12 +41,24 @@ public class RaymarchCamera : SceneViewFilter
     private Camera _cam;
 
     // Use editor directional light to calculate shader lighting
+    [Header("Lighting")]
     public Light _directionLight;
+    public Color _mainCol;
+    public float _lightIntensity, _shadowIntensity, _shadowPenumbra;
+    public Vector2 _shadowDistance;
+
+    [Header("Ambient Occlusion")]
+    public float _aoStepSize;
+    public float _aoIntensity;
+    public int _aoIterations;
 
     // Set the max distance of ray travel in editor
     public float _maxDistance;
     // Set the max iterations of ray travel in editor
     public int _maxIterations;
+    // set the acurracy of ray marching hits
+    [Range(0.1f, 0.001f)]
+    public float _accuracy;
     // Set shape attributes in editor
     public Vector4 _sphere1, _box1, _recursiveTet1, _mandelBulb1, _mandelBox1;
     // float recursive tetraheddren offset
@@ -76,9 +88,19 @@ public class RaymarchCamera : SceneViewFilter
         _raymarchMaterial.SetMatrix("_CamToWorld", _camera.cameraToWorldMatrix);
         _raymarchMaterial.SetFloat("_maxDistance", _maxDistance);
         _raymarchMaterial.SetInt("_maxIterations", _maxIterations);
+        _raymarchMaterial.SetFloat("_accuracy", _accuracy);
         // Lighting
         _raymarchMaterial.SetVector("_lightDir", _directionLight ? _directionLight.transform.forward : Vector3.down);
         _raymarchMaterial.SetColor("_lightCol", _directionLight ?_directionLight.color : new Color(1,1,1));
+        _raymarchMaterial.SetColor("_mainCol", _mainCol);
+        _raymarchMaterial.SetFloat("_lightIntensity", _lightIntensity);
+        _raymarchMaterial.SetFloat("_shadowIntensity", _shadowIntensity);
+        _raymarchMaterial.SetVector("_shadowDistance", _shadowDistance);
+        _raymarchMaterial.SetFloat("_shadowPenumbra", _shadowPenumbra);
+        // AO
+        _raymarchMaterial.SetFloat("_aoStepSize", _aoStepSize);
+        _raymarchMaterial.SetFloat("_aoIntensity", _aoIntensity);
+        _raymarchMaterial.SetInt("_aoIterations", _aoIterations);
         // Shapes
         _raymarchMaterial.SetVector("_sphere1", _sphere1);
         _raymarchMaterial.SetVector("_box1", _box1);

@@ -49,9 +49,15 @@
             uniform float _maxDistance;
             // Set a max distance for rays to travel before they are abandoned
             uniform int _maxIterations;
+			uniform float _accuracy;
             //lighting
             uniform float3 _lightDir;
             uniform fixed4 _lightCol;
+			uniform fixed4 _mainCol;
+			uniform float _lightIntensity;
+			uniform float _shadowIntensity;
+			uniform float2 _shadowDistance;
+			uniform float _shadowPenumbra;
             // Set shape attributes in editor
             uniform float4 _sphere1, _box1, _recursiveTet1, _mandelBulb1, _mandelBox1;
             uniform float _recursiveTet1Offset;
@@ -103,13 +109,14 @@
 				// First argument is the position and is an inout which means it is changed by the function
 				// Second argument is the size of the repeated chunk and should be double the size of the shape
 				// I.E a Cube that is 2x2x2 would need a Mod size of 4 to fit perfectly into the repeation.
-				float modX = pMod1(p.x, _modInterval.x);
-				float modY = pMod1(p.y, _modInterval.y);
-				float modZ = pMod1(p.z, _modInterval.z);
+				//float modX = pMod1(p.x, _modInterval.x);
+				//float modY = pMod1(p.y, _modInterval.y);
+				//float modZ = pMod1(p.z, _modInterval.z);
 				float Sphere1 = sdSphere(p - _sphere1.xyz, _sphere1.w);
 				float Box1 = sdBox(p - _box1.xyz, _box1.www);
-                return opS(Sphere1,sdMandelBox(p - _mandelBox1.xyz, _mandelBox1Iterations, _mandelBox1Scale, _mandelBox1SphereRadius, _mandelBox1FoldLimit.xyz));
-                //return sdMandelBulb(p - _mandelBulb1.xyz, _mandelBulb1Power, _mandelBulb1Bailout, _mandelBulb1Iterations);
+				float mandelBulb = sdMandelBulb(p - _mandelBulb1.xyz, _mandelBulb1Power, _mandelBulb1Bailout, _mandelBulb1Iterations);
+                float mandelBox = sdMandelBox(p - _mandelBox1.xyz, _mandelBox1Iterations, _mandelBox1Scale, _mandelBox1SphereRadius, _mandelBox1FoldLimit.xyz);
+				return mandelBox;
 				//return opS(Sphere1,Box1);
                 //return sdRTet(p - _recursiveTet1.xyz, _recursiveTet1.w,_recursiveTet1Offset, _recursiveTet1Iterations);
             }
@@ -142,6 +149,66 @@
                     distanceField(p + offset.yyx) - distanceField(p - offset.yyx));
                 return normalize(n);
             }
+
+			uniform float _aoStepSize, _aoIntensity;
+			uniform int _aoIterations;
+
+			float ambientOcclusion(float3 p, float3 n) {
+				float step = _aoStepSize;
+				float ao = 0.0;
+				float dist;
+				for (int i = 1; i <= _aoIterations; i++) {
+					dist = step * i;
+					ao += max(0.0, (dist - distanceField(p + n * dist)) / dist);
+				}
+				return (1.0 - ao * _aoIntensity);
+			}
+
+			float hardShadow(float3 ro, float3 rd, float mint, float maxt) {
+				// t = distance travelled. 
+				// We start at our minimum distance and we proceed along the inverse of the lighting direction
+				// and continue checking our distance field. If we have a collision we know we have hit something and we
+				// return 0 which will be multiplied by the light value to give a shadow.
+				// if we get to our max distance(maxt) we have no shadows and return 1.0
+				for (float t = mint; t < maxt;) {
+					float h = distanceField(ro + rd * t);
+					if (h < _accuracy) {
+						return 0.0;
+					}
+					t += h;
+				}
+				return 1.0;
+			}
+
+			float softShadow(float3 ro, float3 rd, float mint, float maxt, float k) {
+				// k = penumbra
+				float result = 1.0;
+				for (float t = mint; t < maxt;) {
+					float h = distanceField(ro + rd * t);
+					if (h < _accuracy) {
+						return 0.0;
+					}
+					// instead of returning 0 for the rays that dont hit an object
+                    // we return the value of the closest distance it came to an object
+					result = min(result, k * h / t);
+					t += h;
+				}
+				return result;
+			}
+
+			float3 Shading(float3 p, float3 n) {
+				float3 result;
+				// Diffuse color
+				float3 color = _mainCol.rgb;
+				// Directional light
+				float3 light = (_lightCol * dot(-_lightDir, n) * 0.5 + 0.5) * _lightIntensity;
+				// Shadows
+				float shadow = softShadow(p, -_lightDir, _shadowDistance.x, _shadowDistance.y, _shadowPenumbra) * 0.5 + 0.5;
+				shadow = max(0.0,pow(shadow, _shadowIntensity));
+				float ao = ambientOcclusion(p, n);
+				result = color * light * shadow * ao;
+				return result;
+			}
 
             fixed4 raymarching(float3 ro, float3 rd, float depth)
             {
@@ -176,15 +243,15 @@
                     // if the result of d is negative e.g. -1 We are instande an object
                     // if it is positive e.g. 1, we are outside (this is our distance from a surface)
                     // if it is 0 (or within a tolerance e.g. 0.01) we are at the surface.
-                    if (d < 0.01)
+                    if (d < _accuracy)
                     {
                         // shading! calculating normals and a lambertian light model, fun!
                         // normals!
                         float3 n = getNormal(p);
                         // light!
                         // Lighting requires the dot product of the inversed lighting direction and the normal direction
-                        float light = dot(-_lightDir, n);
-                        result = fixed4(_lightCol.rgb * light,1);
+						float3 s = Shading(p, n);
+                        result = fixed4(s,1);
                         break;
                     }
 
