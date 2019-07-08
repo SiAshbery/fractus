@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.45049906, g: 0.4983787, b: 0.56378055, a: 1}
+  m_IndirectSpecularColor: {r: 0.45049852, g: 0.49837786, b: 0.5637794, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -312,26 +312,30 @@ MonoBehaviour:
   _mainCol: {r: 0.77254903, g: 0.77859366, b: 0.8509804, a: 0}
   _lightIntensity: 2
   _shadowIntensity: 0.5
-  _shadowPenumbra: 524.9
+  _shadowPenumbra: 8.8
   _shadowDistance: {x: 0.13, y: 100}
-  _aoStepSize: 0.2
-  _aoIntensity: 0.25
-  _aoIterations: 3
-  _maxDistance: 102.77
-  _maxIterations: 363
-  _accuracy: 0.0028
+  _aoStepSize: 7.42
+  _aoIntensity: 0.6
+  _aoIterations: 1
+  _maxDistance: 522.9
+  _maxIterations: 417
+  _accuracy: 0.001
   _sphere1: {x: 0, y: 0, z: 0, w: 0}
   _box1: {x: 0, y: 0, z: 0, w: 8}
   _recursiveTet1: {x: 0, y: 0, z: 0, w: 2}
-  _mandelBulb1: {x: 0, y: 0, z: 0, w: 0}
+  _mandelBulb1: {x: 0, y: 0, z: 0, w: 0.09}
   _mandelBox1: {x: 0, y: 0, z: 0, w: 0}
   _recursiveTet1Offset: 20
   _recursiveTet1Iterations: 0
-  _mandelBulb1Iterations: 9
+  _mandelBulb1Iterations: 24
   _mandelBox1Iterations: 12
-  _mandelBulb1Power: 21.83
-  _mandelBulb1Bailout: 1.81
-  _mandelBox1Scale: 2.46
-  _mandelBox1SphereRadius: 0.08
+  _mandelBulb1Power: 6.5
+  _mandelBulb1Bailout: 1.77
+  _mandelBox1Scale: 2.45
+  _mandelBox1SphereRadius: 0.1
   _modInterval: {x: 10, y: 10, z: 10}
   _mandelBox1FoldLimit: {x: 1, y: 1, z: 1.63}
+  _apollonian1: {x: 0, y: 0, z: 0}
+  _apollonian1Scale: 0.72
+  _apollonian1Iterations: 16
+  _apollonian1Size: {x: 1, y: 1, z: 1.2}

@@ -70,6 +70,12 @@ public class RaymarchCamera : SceneViewFilter
     public Vector3 _modInterval;
     public Vector3 _mandelBox1FoldLimit;
 
+    [Header("Apollonian")]
+    public Vector3 _apollonian1;
+    public float _apollonian1Scale;
+    public int _apollonian1Iterations;
+    public Vector3 _apollonian1Size;
+
     // On render image to communicate with shader
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
@@ -119,8 +125,13 @@ public class RaymarchCamera : SceneViewFilter
         _raymarchMaterial.SetFloat("_mandelBox1Scale", _mandelBox1Scale);
         _raymarchMaterial.SetVector("_mandelBox1FoldLimit", _mandelBox1FoldLimit);
         _raymarchMaterial.SetFloat("_mandelBox1SphereRadius", _mandelBox1SphereRadius);
-        // Repetition
-        _raymarchMaterial.SetVector("_modInterval", _modInterval);
+        // Apollonian
+        _raymarchMaterial.SetVector("_apollonian1", _apollonian1);
+        _raymarchMaterial.SetFloat("_apollonian1Scale", _apollonian1Scale);
+        _raymarchMaterial.SetInt("_apollonian1Iterations", _apollonian1Iterations);
+        _raymarchMaterial.SetVector("_apollonian1Size", _apollonian1Size);
+    // Repetition
+    _raymarchMaterial.SetVector("_modInterval", _modInterval);
 
         // Here we create the quad which represents our screen.
         // It is important that it's corner corresponds correctly to the corners of the frustum.
