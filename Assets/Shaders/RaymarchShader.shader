@@ -59,12 +59,12 @@
 			uniform float2 _shadowDistance;
 			uniform float _shadowPenumbra;
             // Set shape attributes in editor
-            uniform float4 _sphere1, _box1, _recursiveTet1, _mandelBulb1, _mandelBox1;
+            uniform float4 _sphere1, _box1, _recursiveTet1, _mandelBulb1, _mandelBox1, _apollonian1;
             uniform float _recursiveTet1Offset;
-            uniform int _recursiveTet1Iterations, _mandelBulb1Iterations, _mandelBox1Iterations;
-            uniform float _mandelBulb1Power, _mandelBulb1Bailout, _mandelBox1Scale, _mandelBox1SphereRadius;
+            uniform int _recursiveTet1Iterations, _mandelBulb1Iterations, _mandelBox1Iterations, _apollonian1Iterations;
+            uniform float _mandelBulb1Power, _mandelBulb1Bailout, _mandelBox1Scale, _mandelBox1SphereRadius, _apollonian1Scale;
 			// Set repetation interval for modulus
-			uniform float3 _modInterval, _mandelBox1FoldLimit;
+			uniform float3 _modInterval, _mandelBox1FoldLimit, _apollonian1Size;
 
             struct appdata
             {
@@ -116,6 +116,7 @@
 				float Box1 = sdBox(p - _box1.xyz, _box1.www);
 				float mandelBulb = sdMandelBulb(p - _mandelBulb1.xyz, _mandelBulb1Power, _mandelBulb1Bailout, _mandelBulb1Iterations);
                 float mandelBox = sdMandelBox(p - _mandelBox1.xyz, _mandelBox1Iterations, _mandelBox1Scale, _mandelBox1SphereRadius, _mandelBox1FoldLimit.xyz);
+                float apollonian = sdApollonian(p - _apollonian1.xyz, _apollonian1Scale, _apollonian1Iterations, _apollonian1Size);
 				return mandelBox;
 				//return opS(Sphere1,Box1);
                 //return sdRTet(p - _recursiveTet1.xyz, _recursiveTet1.w,_recursiveTet1Offset, _recursiveTet1Iterations);

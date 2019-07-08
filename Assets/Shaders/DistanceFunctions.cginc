@@ -129,6 +129,46 @@ float sdMandelBox(float3 p, int iterations, float scale, float sphereRadius, flo
   return (length(pos.xyz) - C1) / pos.w - C2;
 }
 
+float sdApollonian( float3 p, float scale, int iterations, float3 size )
+{
+    //float scale = 1.0;
+
+    //float4 orb = float4(1000.0,1000.0,1000.0,1000.0); 
+    
+    //for( int i=0; i<8;i++ )
+    //{
+    //    p = -1.0 + 2.0*frac(0.5*p+0.5);
+
+    //    float r2 = dot(p,p);
+        
+    //    orb = min( orb, float4(abs(p),r2) );
+        
+    //    float k = s/r2;
+    //    p     *= k;
+    //    scale *= k;
+    //}
+    
+    //return 0.25*abs(p.y)/scale;
+
+    //float3 CSize = float3(1.0, 1.0, 1.3);
+    p = p.xzy;
+    // float scale = 0.5;
+    for( int i=0; i < iterations ;i++ )
+    {
+        p = 2.0*clamp(p, -size, size) - p;
+        //float r2 = dot(p,p);
+        float r2 = dot(p,p+sin(p.z*.3)); //Alternate fractal
+        float k = max((2.0)/(r2), 0.027);
+        p     *= k;
+        scale *= k;
+    }
+    float l = length(p.xy);
+    float rxy = l - 4.0;
+    float n = l * p.z;
+    rxy = max(rxy, -(n) / 4.0);
+    return (rxy) / abs(scale);
+}
+
 // BOOLEAN OPERATORS //
 
 // Union
