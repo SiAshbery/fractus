@@ -117,7 +117,7 @@
 				float mandelBulb = sdMandelBulb(p - _mandelBulb1.xyz, _mandelBulb1Power, _mandelBulb1Bailout, _mandelBulb1Iterations);
                 float mandelBox = sdMandelBox(p - _mandelBox1.xyz, _mandelBox1Iterations, _mandelBox1Scale, _mandelBox1SphereRadius, _mandelBox1FoldLimit.xyz);
                 float apollonian = sdApollonian(p - _apollonian1.xyz, _apollonian1Scale, _apollonian1Iterations, _apollonian1Size);
-				return mandelBox;
+				return apollonian;
 				//return opS(Sphere1,Box1);
                 //return sdRTet(p - _recursiveTet1.xyz, _recursiveTet1.w,_recursiveTet1Offset, _recursiveTet1Iterations);
             }

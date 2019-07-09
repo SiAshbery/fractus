@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.45049852, g: 0.49837786, b: 0.5637794, a: 1}
+  m_IndirectSpecularColor: {r: 0.45049906, g: 0.4983787, b: 0.56378055, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -289,7 +289,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: 0.17611526, y: 0.50657153, z: -0.1065551, w: 0.8372662}
-  m_LocalPosition: {x: -8.9, y: 5.1, z: -7.2}
+  m_LocalPosition: {x: -8.9, y: 27.41, z: -45.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -315,11 +315,11 @@ MonoBehaviour:
   _shadowPenumbra: 8.8
   _shadowDistance: {x: 0.13, y: 100}
   _aoStepSize: 7.42
-  _aoIntensity: 0.6
+  _aoIntensity: 0.45
   _aoIterations: 1
-  _maxDistance: 522.9
-  _maxIterations: 417
-  _accuracy: 0.001
+  _maxDistance: 548.28
+  _maxIterations: 584
+  _accuracy: 0.0237
   _sphere1: {x: 0, y: 0, z: 0, w: 0}
   _box1: {x: 0, y: 0, z: 0, w: 8}
   _recursiveTet1: {x: 0, y: 0, z: 0, w: 2}
@@ -336,6 +336,6 @@ MonoBehaviour:
   _modInterval: {x: 10, y: 10, z: 10}
   _mandelBox1FoldLimit: {x: 1, y: 1, z: 1.63}
   _apollonian1: {x: 0, y: 0, z: 0}
-  _apollonian1Scale: 0.72
+  _apollonian1Scale: 1.33
   _apollonian1Iterations: 16
-  _apollonian1Size: {x: 1, y: 1, z: 1.2}
+  _apollonian1Size: {x: 1, y: 1.29, z: 1}
