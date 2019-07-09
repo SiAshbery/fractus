@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.4504977, g: 0.4983834, b: 0.5637824, a: 1}
+  m_IndirectSpecularColor: {r: 0.45049846, g: 0.49838376, b: 0.56378305, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -193,7 +193,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 4.5915e-41, y: 1.1641554e-32, z: 1e-45, w: 1.56e-43}
+  m_BoundingSphereOverride: {x: 4.5905e-41, y: 4.51e-43, z: 7.3e-44, w: NaN}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -311,17 +311,17 @@ MonoBehaviour:
   _directionLight: {fileID: 170076734}
   _mainCol: {r: 0.77254903, g: 0.77859366, b: 0.8509804, a: 0}
   _lightIntensity: 2
-  _shadowIntensity: 0
-  _shadowPenumbra: 1
+  _shadowIntensity: 1
+  _shadowPenumbra: 1.74
   _shadowDistance: {x: 0.13, y: 100}
-  _aoStepSize: 7.42
-  _aoIntensity: 0.6
-  _aoIterations: 1
-  _fogColor: {r: 0.14150941, g: 0.10672539, b: 0.096787095, a: 0}
-  _fogDensity: 0.132
+  _aoStepSize: 4.37
+  _aoIntensity: 0.81
+  _aoIterations: 2
+  _fogColor: {r: 1, g: 1, b: 1, a: 0}
+  _fogDensity: 0.171
   _maxDistance: 1196.44
   _maxIterations: 711
-  _accuracy: 0.0186
+  _accuracy: 0.0099
   _modInterval: {x: 10, y: 10, z: 10}
   _sphere1: {x: 0, y: 0, z: 0, w: 0}
   _box1: {x: 0, y: 0, z: 0, w: 8}
@@ -337,7 +337,7 @@ MonoBehaviour:
   _mandelBox1Scale: 2.27
   _mandelBox1SphereRadius: 0.1
   _mandelBox1Iterations: 12
-  _apollonian1: {x: 0, y: 0, z: 0}
-  _apollonian1Scale: 2.47
-  _apollonian1Iterations: 17
-  _apollonian1Size: {x: 1, y: 1, z: 1.3}
+  _apollonian1: {x: 0, y: 2.31, z: 0}
+  _apollonian1Scale: 2.38
+  _apollonian1Iterations: 16
+  _apollonian1Size: {x: 0.35, y: 1, z: 1.17}
