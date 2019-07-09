@@ -53,13 +53,14 @@
             //lighting
             uniform float3 _lightDir;
             uniform fixed4 _lightCol;
-			uniform fixed4 _mainCol;
-			uniform float _lightIntensity;
+			uniform fixed4 _mainCol, _fogColor;
+			uniform float _lightIntensity, _fogDensity;
 			uniform float _shadowIntensity;
 			uniform float2 _shadowDistance;
 			uniform float _shadowPenumbra;
             // Set shape attributes in editor
-            uniform float4 _sphere1, _box1, _recursiveTet1, _mandelBulb1, _mandelBox1, _apollonian1;
+            uniform float4 _sphere1, _box1, _recursiveTet1, _apollonian1;
+            uniform float3 _mandelBox1, _mandelBulb1;
             uniform float _recursiveTet1Offset;
             uniform int _recursiveTet1Iterations, _mandelBulb1Iterations, _mandelBox1Iterations, _apollonian1Iterations;
             uniform float _mandelBulb1Power, _mandelBulb1Bailout, _mandelBox1Scale, _mandelBox1SphereRadius, _apollonian1Scale;
@@ -117,7 +118,7 @@
 				float mandelBulb = sdMandelBulb(p - _mandelBulb1.xyz, _mandelBulb1Power, _mandelBulb1Bailout, _mandelBulb1Iterations);
                 float mandelBox = sdMandelBox(p - _mandelBox1.xyz, _mandelBox1Iterations, _mandelBox1Scale, _mandelBox1SphereRadius, _mandelBox1FoldLimit.xyz);
                 float apollonian = sdApollonian(p - _apollonian1.xyz, _apollonian1Scale, _apollonian1Iterations, _apollonian1Size);
-				return mandelBox;
+				return apollonian;
 				//return opS(Sphere1,Box1);
                 //return sdRTet(p - _recursiveTet1.xyz, _recursiveTet1.w,_recursiveTet1Offset, _recursiveTet1Iterations);
             }
@@ -196,8 +197,34 @@
 				}
 				return result;
 			}
+            
 
-			float3 Shading(float3 p, float3 n) {
+            float3 applySimpleFog( in float3  rgb,       // original color of the pixel
+               in float d // camera to point distance
+               )
+            {
+                //float direction = normalize(d);
+                //fog density
+                //float b = 0.25;
+                float fogAmount = 1.0 - exp( -(abs(d))*(_fogDensity/10) );
+                // glsl uses mix, hlsl uses lerp
+                return lerp( rgb, _fogColor, fogAmount );
+            }
+
+            float3 applyLitFog( in float3  rgb,      // original color of the pixel
+               in float d, // camera to point distance
+               in float3  rd)  // camera to point vector
+            {
+                float direction = normalize(rd);
+                float fogAmount = direction - exp( -d*_fogDensity );
+                float sunAmount = max( dot( rd, _lightDir ), 0.0 );
+                float3 color  = lerp( _fogColor, // bluish
+                           _lightCol, // yellowish
+                           pow(_lightIntensity / 4,8.0) );
+                return lerp( rgb, color, fogAmount );
+            }
+
+			float3 Shading(float3 p, float3 n, float t) {
 				float3 result;
 				// Diffuse color
 				float3 color = _mainCol.rgb;
@@ -207,9 +234,15 @@
 				float shadow = softShadow(p, -_lightDir, _shadowDistance.x, _shadowDistance.y, _shadowPenumbra) * 0.5 + 0.5;
 				shadow = max(0.0,pow(shadow, _shadowIntensity));
 				float ao = ambientOcclusion(p, n);
+               
 				result = color * light * shadow * ao;
+                if (_fogDensity > 0) {
+                    result = applySimpleFog(result, t);
+                }
 				return result;
 			}
+
+  
 
             fixed4 raymarching(float3 ro, float3 rd, float depth)
             {
@@ -251,7 +284,7 @@
                         float3 n = getNormal(p);
                         // light!
                         // Lighting requires the dot product of the inversed lighting direction and the normal direction
-						float3 s = Shading(p, n);
+						float3 s = Shading(p, n, t);
                         result = fixed4(s,1);
                         break;
                     }
