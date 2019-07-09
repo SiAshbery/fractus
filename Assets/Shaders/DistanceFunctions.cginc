@@ -157,7 +157,7 @@ float sdApollonian( float3 p, float scale, int iterations, float3 size )
     {
         p = 2.0*clamp(p, -size, size) - p;
         float r2 = dot(p,p);
-        //float r2 = dot(p,p+sin(p.z*.3)); //Alternate fractal
+        //float r2 = dot(p,p+sin(p.z*.3)); //Alternate fractal pretty resource intensive..
         float k = max((2.0)/(r2), 0.027);
         p     *= k;
         scale *= k;

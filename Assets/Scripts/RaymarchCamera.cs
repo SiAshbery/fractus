@@ -52,6 +52,12 @@ public class RaymarchCamera : SceneViewFilter
     public float _aoIntensity;
     public int _aoIterations;
 
+    [Header("Fog")]
+    public Color _fogColor;
+    [Range(0.0f, 1.0f)]
+    public float _fogDensity;
+
+    [Header("Raymarching Controls")]
     // Set the max distance of ray travel in editor
     public float _maxDistance;
     // Set the max iterations of ray travel in editor
@@ -59,16 +65,31 @@ public class RaymarchCamera : SceneViewFilter
     // set the acurracy of ray marching hits
     [Range(0.1f, 0.001f)]
     public float _accuracy;
-    // Set shape attributes in editor
-    public Vector4 _sphere1, _box1, _recursiveTet1, _mandelBulb1, _mandelBox1;
-    // float recursive tetraheddren offset
-    public float _recursiveTet1Offset;
-    // float fractal iterations
-    public int _recursiveTet1Iterations, _mandelBulb1Iterations, _mandelBox1Iterations;
-    public float _mandelBulb1Power, _mandelBulb1Bailout, _mandelBox1Scale, _mandelBox1SphereRadius;
+
     // Mod repetition interval
     public Vector3 _modInterval;
+
+    [Header("Sphere")]
+    public Vector4 _sphere1;
+
+    [Header("Box")]
+    public Vector4 _box1;
+
+    [Header("Sierpinski Triangle")]
+    public Vector3 _recursiveTet1;
+    public float _recursiveTet1Offset;
+    public int _recursiveTet1Iterations;
+
+    [Header("Mandel Bulb")]
+    public Vector3 _mandelBulb1;
+    public float _mandelBulb1Power, _mandelBulb1Bailout;
+    public int _mandelBulb1Iterations;
+
+    [Header("Mandel Box")]
+    public Vector3 _mandelBox1;
     public Vector3 _mandelBox1FoldLimit;
+    public float _mandelBox1Scale, _mandelBox1SphereRadius;
+    public int _mandelBox1Iterations;
 
     [Header("Apollonian")]
     public Vector3 _apollonian1;
@@ -99,6 +120,8 @@ public class RaymarchCamera : SceneViewFilter
         _raymarchMaterial.SetVector("_lightDir", _directionLight ? _directionLight.transform.forward : Vector3.down);
         _raymarchMaterial.SetColor("_lightCol", _directionLight ?_directionLight.color : new Color(1,1,1));
         _raymarchMaterial.SetColor("_mainCol", _mainCol);
+        _raymarchMaterial.SetColor("_fogColor", _fogColor);
+        _raymarchMaterial.SetFloat("_fogDensity", _fogDensity);
         _raymarchMaterial.SetFloat("_lightIntensity", _lightIntensity);
         _raymarchMaterial.SetFloat("_shadowIntensity", _shadowIntensity);
         _raymarchMaterial.SetVector("_shadowDistance", _shadowDistance);

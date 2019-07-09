@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.45049906, g: 0.4983787, b: 0.56378055, a: 1}
+  m_IndirectSpecularColor: {r: 0.4504977, g: 0.4983834, b: 0.5637824, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -193,7 +193,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0.04296875, y: 0.12890625, z: 0.03515625, w: -0.0390625}
+  m_BoundingSphereOverride: {x: 4.5915e-41, y: 1.1641554e-32, z: 1e-45, w: 1.56e-43}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -204,13 +204,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170076733}
-  m_LocalRotation: {x: -0.33279854, y: -0.14617234, z: -0.4954595, w: -0.7889225}
+  m_LocalRotation: {x: 0.29625005, y: 0.64205605, z: -0.5181458, w: -0.48117045}
   m_LocalPosition: {x: -0.58, y: 1.455, z: -0.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 157.65, y: 217.296, z: 611.888}
+  m_LocalEulerAnglesHint: {x: 157.65, y: 90, z: 611.888}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,13 +288,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: 0.17611526, y: 0.50657153, z: -0.1065551, w: 0.8372662}
-  m_LocalPosition: {x: -8.9, y: 27.41, z: -45.76}
+  m_LocalRotation: {x: -0.09150171, y: 0, z: 0, w: 0.99580497}
+  m_LocalPosition: {x: 49.5, y: 1118.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 23.757002, y: 62.350002, z: 0}
+  m_LocalEulerAnglesHint: {x: -10.500001, y: 0, z: 0}
 --- !u!114 &534669906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,31 +311,33 @@ MonoBehaviour:
   _directionLight: {fileID: 170076734}
   _mainCol: {r: 0.77254903, g: 0.77859366, b: 0.8509804, a: 0}
   _lightIntensity: 2
-  _shadowIntensity: 0.5
-  _shadowPenumbra: 8.8
+  _shadowIntensity: 0
+  _shadowPenumbra: 1
   _shadowDistance: {x: 0.13, y: 100}
   _aoStepSize: 7.42
-  _aoIntensity: 0.45
+  _aoIntensity: 0.6
   _aoIterations: 1
-  _maxDistance: 548.28
-  _maxIterations: 584
-  _accuracy: 0.0237
+  _fogColor: {r: 0.14150941, g: 0.10672539, b: 0.096787095, a: 0}
+  _fogDensity: 0.132
+  _maxDistance: 1196.44
+  _maxIterations: 711
+  _accuracy: 0.0186
+  _modInterval: {x: 10, y: 10, z: 10}
   _sphere1: {x: 0, y: 0, z: 0, w: 0}
   _box1: {x: 0, y: 0, z: 0, w: 8}
-  _recursiveTet1: {x: 0, y: 0, z: 0, w: 2}
-  _mandelBulb1: {x: 0, y: 0, z: 0, w: 0.09}
-  _mandelBox1: {x: 0, y: 0, z: 0, w: 0}
+  _recursiveTet1: {x: 0, y: 0, z: 0}
   _recursiveTet1Offset: 20
   _recursiveTet1Iterations: 0
-  _mandelBulb1Iterations: 24
-  _mandelBox1Iterations: 12
+  _mandelBulb1: {x: 0, y: 0, z: 0}
   _mandelBulb1Power: 6.5
   _mandelBulb1Bailout: 1.77
-  _mandelBox1Scale: 2.45
-  _mandelBox1SphereRadius: 0.1
-  _modInterval: {x: 10, y: 10, z: 10}
+  _mandelBulb1Iterations: 24
+  _mandelBox1: {x: 0, y: 0, z: 0}
   _mandelBox1FoldLimit: {x: 1, y: 1, z: 1.63}
+  _mandelBox1Scale: 2.27
+  _mandelBox1SphereRadius: 0.1
+  _mandelBox1Iterations: 12
   _apollonian1: {x: 0, y: 0, z: 0}
-  _apollonian1Scale: 1.33
-  _apollonian1Iterations: 16
-  _apollonian1Size: {x: 1, y: 1.29, z: 1}
+  _apollonian1Scale: 2.47
+  _apollonian1Iterations: 17
+  _apollonian1Size: {x: 1, y: 1, z: 1.3}
