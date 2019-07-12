@@ -1,4 +1,15 @@
-﻿// Sphere
+﻿float3x3  rotationMatrix3(float3 v, float angle)
+{
+    float c = cos(radians(angle));
+    float s = sin(radians(angle));
+    
+    return float3x3(c + (1.0 - c) * v.x * v.x, (1.0 - c) * v.x * v.y - s * v.z, (1.0 - c) * v.x * v.z + s * v.y,
+        (1.0 - c) * v.x * v.y + s * v.z, c + (1.0 - c) * v.y * v.y, (1.0 - c) * v.y * v.z - s * v.x,
+        (1.0 - c) * v.x * v.z - s * v.y, (1.0 - c) * v.y * v.z + s * v.x, c + (1.0 - c) * v.z * v.z
+        );
+}
+
+// Sphere
 // s: radius
 float sdSphere(float3 p, float s)
 {
@@ -58,6 +69,14 @@ void boxFold(inout float3 z, inout float dz, int foldingLimit) {
 // Recursive tetrahedron
 float sdRTet(float3 p, float scale, float offset, int iterations)
 {
+    float3 RotVector=float3(0.5,-0.05,-0.5);
+    float RotAngle=145.0;
+    float Amplitude=0.25;
+    float Speed=1.3;
+    float time=_Time*Speed;
+    float3 ani=float3(sin(time),sin(time),cos(time))*Amplitude;
+    float3x3 rot = rotationMatrix3(normalize(RotVector+ani), RotAngle+sin(time)*10.0);
+    p = mul(p,rot);
     int n = 0;
     while (n < iterations) {
        if(p.x+p.y<0) p.xy = -p.yx; // fold 1
@@ -131,28 +150,18 @@ float sdMandelBox(float3 p, int iterations, float scale, float sphereRadius, flo
 
 float sdApollonian( float3 p, float scale, int iterations, float3 size )
 {
-    //float scale = 1.0;
-
-    //float4 orb = float4(1000.0,1000.0,1000.0,1000.0); 
-    
-    //for( int i=0; i<8;i++ )
-    //{
-    //    p = -1.0 + 2.0*frac(0.5*p+0.5);
-
-    //    float r2 = dot(p,p);
-        
-    //    orb = min( orb, float4(abs(p),r2) );
-        
-    //    float k = s/r2;
-    //    p     *= k;
-    //    scale *= k;
-    //}
-    
-    //return 0.25*abs(p.y)/scale;
-
+    float3 RotVector=float3(0.5,-0.05,-0.5);
+    float RotAngle=45.0;
+    float Amplitude=0.25;
+    float Speed=1.3;
+    float time=_Time*Speed;
+    //float3 ani=float3(sin(time),sin(time),cos(time))*Amplitude;
+    //float3x3 rot = rotationMatrix3(normalize(RotVector+ani), RotAngle+sin(time)*10.0);
     //float3 CSize = float3(1.0, 1.0, 1.3);
     p = p.xzy;
     // float scale = 0.5;
+
+
     for( int i=0; i < iterations ;i++ )
     {
         p = 2.0*clamp(p, -size, size) - p;
@@ -167,6 +176,35 @@ float sdApollonian( float3 p, float scale, int iterations, float3 size )
     float n = l * p.z;
     rxy = max(rxy, -(n) / 4.0);
     return (rxy) / abs(scale);
+}
+
+float sdJulia(float3 p) {
+    int Iterations=16;
+    float Scale=1.27;
+    float3 Julia=float3(-2.,-1.5,-.5);
+    float RotAngle=45.0;
+    float3 RotVector=float3(0.5,-0.05,-0.5);
+    float Speed=1.3;
+    float Amplitude=0.25;
+
+    p=p.zxy;
+    float a=1.5+sin(_Time*0.5)*0.5;
+    p.xy=mul(p.xy,float2x2(cos(a),sin(a),-sin(a),cos(a)));
+    p.x*=0.75;
+    float time=_Time*Speed;
+    float3 ani;
+    ani=float3(sin(time),sin(time),cos(time))*Amplitude;
+    p+=sin(p*3.0+time*6.0)*.04;
+    float3x3 rot = rotationMatrix3(normalize(RotVector+ani), RotAngle+sin(time)*10.0);
+    float3 pp=p;
+    float l;
+    for (int i=0; i<Iterations; i++) {
+        p.xy=abs(p.xy);
+        p=p*Scale+Julia;
+        p=mul(p,rot);
+        l=length(p);
+    }
+    return l*pow(Scale, -float(Iterations))*.9;
 }
 
 // BOOLEAN OPERATORS //

@@ -76,8 +76,9 @@ public class RaymarchCamera : SceneViewFilter
     public Vector4 _box1;
 
     [Header("Sierpinski Triangle")]
-    public Vector3 _recursiveTet1;
+    public Vector4 _recursiveTet1;
     public float _recursiveTet1Offset;
+    [Range(1, 26)]
     public int _recursiveTet1Iterations;
 
     [Header("Mandel Bulb")]

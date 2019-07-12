@@ -113,12 +113,14 @@
 				//float modX = pMod1(p.x, _modInterval.x);
 				//float modY = pMod1(p.y, _modInterval.y);
 				//float modZ = pMod1(p.z, _modInterval.z);
-				float Sphere1 = sdSphere(p - _sphere1.xyz, _sphere1.w);
-				float Box1 = sdBox(p - _box1.xyz, _box1.www);
-				float mandelBulb = sdMandelBulb(p - _mandelBulb1.xyz, _mandelBulb1Power, _mandelBulb1Bailout, _mandelBulb1Iterations);
+				//float Sphere1 = sdSphere(p - _sphere1.xyz, _sphere1.w);
+				//float Box1 = sdBox(p - _box1.xyz, _box1.www);
+				//float mandelBulb = sdMandelBulb(p - _mandelBulb1.xyz, _mandelBulb1Power, _mandelBulb1Bailout, _mandelBulb1Iterations);
                 float mandelBox = sdMandelBox(p - _mandelBox1.xyz, _mandelBox1Iterations, _mandelBox1Scale, _mandelBox1SphereRadius, _mandelBox1FoldLimit.xyz);
-                float apollonian = sdApollonian(p - _apollonian1.xyz, _apollonian1Scale, _apollonian1Iterations, _apollonian1Size);
-				return apollonian;
+                // float apollonian = sdApollonian(p - _apollonian1.xyz, _apollonian1Scale, _apollonian1Iterations, _apollonian1Size);
+                // float sierpinskiTri = sdRTet(p - _recursiveTet1.xyz, _recursiveTet1.w,_recursiveTet1Offset, _recursiveTet1Iterations);
+                //float julia = sdJulia(p);
+				return mandelBox;
 				//return opS(Sphere1,Box1);
                 //return sdRTet(p - _recursiveTet1.xyz, _recursiveTet1.w,_recursiveTet1Offset, _recursiveTet1Iterations);
             }
@@ -206,7 +208,7 @@
                 //float direction = normalize(d);
                 //fog density
                 //float b = 0.25;
-                float fogAmount = 1.0 - exp( -(abs(d))*(_fogDensity/10) );
+                float fogAmount = 1.0 - exp( -(abs(d))*(_fogDensity) );
                 // glsl uses mix, hlsl uses lerp
                 return lerp( rgb, _fogColor, fogAmount );
             }

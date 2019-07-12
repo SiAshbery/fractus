@@ -1,9 +1,9 @@
 ﻿<Properties StartupConfiguration="{12C3061B-6FDE-E761-1F8B-55F779B058E9}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Shaders/RaymarchShader.shader">
     <Files>
-      <File FileName="Assets/Shaders/RaymarchShader.shader" Line="149" Column="55" />
-      <File FileName="Assets/Scripts/RaymarchCamera.cs" />
-      <File FileName="Assets/Scripts/SceneViewFilter.cs" Line="1" Column="1" />
+      <File FileName="Assets/Shaders/RaymarchShader.shader" Line="111" Column="3" />
+      <File FileName="Assets/Scripts/RaymarchCamera.cs" Line="82" Column="41" />
+      <File FileName="Assets/Scripts/SceneViewFilter.cs" />
       <File FileName="Assets/Shaders/DistanceFunctions.cginc" />
     </Files>
     <Pads>
@@ -23,7 +23,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4a140aff-8e73-4efd-8e55-2d470863672b" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="0f3f9ab0-2289-4345-8061-bcf2a1a1a705" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
