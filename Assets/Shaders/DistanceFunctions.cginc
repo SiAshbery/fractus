@@ -1,4 +1,6 @@
-﻿float3x3  rotationMatrix3(float3 v, float angle)
+﻿#define M_PI 3.14159265358979
+
+float3x3  rotationMatrix3(float3 v, float angle)
 {
     float c = cos(radians(angle));
     float s = sin(radians(angle));

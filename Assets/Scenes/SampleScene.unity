@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: d7daeefbca4f14360bac0e1df1bdacd4, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.4514106, g: 0.5008695, b: 0.57214403, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -193,7 +193,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 4.5915e-41, y: 2.431163e-33, z: 1e-45, w: 1.56e-43}
+  m_BoundingSphereOverride: {x: 4.55e-43, y: 1.39e-43, z: 0, w: -1.5376072}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -204,13 +204,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170076733}
-  m_LocalRotation: {x: 0.25663334, y: -0, z: -0, w: 0.9665089}
+  m_LocalRotation: {x: -0.7985593, y: 0.20011249, z: -0.4800722, w: -0.30296665}
   m_LocalPosition: {x: -0.58, y: 1.455, z: -0.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 29.741001, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 42.533, y: 838.843, z: 1262.233}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,13 +288,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: -0.0034111314, y: 0.7917979, z: 0.0044222553, w: 0.61075777}
-  m_LocalPosition: {x: 0.1, y: -7.34, z: -0.03}
+  m_LocalRotation: {x: -0.1878099, y: 0, z: 0, w: 0.98220545}
+  m_LocalPosition: {x: 0, y: 4.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -0.64, y: 104.71, z: 0}
+  m_LocalEulerAnglesHint: {x: -21.65, y: 0, z: 0}
 --- !u!114 &534669906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,34 +310,39 @@ MonoBehaviour:
   _shader: {fileID: 4800000, guid: 3418dedbe09f543bd8d3d8d5e01e0a53, type: 3}
   _directionLight: {fileID: 170076734}
   _mainCol: {r: 0.77254903, g: 0.77859366, b: 0.8509804, a: 0}
-  _lightIntensity: 2
+  _lightIntensity: 1
   _shadowIntensity: 1
-  _shadowPenumbra: 1.74
-  _shadowDistance: {x: 0.13, y: 100}
+  _shadowPenumbra: 2.66
+  _specularHighlight: 57
+  _specularIntensity: 0.43
+  _shadowDistance: {x: 1.6, y: 100}
   _aoStepSize: 0.32
   _aoIntensity: 0.07
   _aoIterations: 3
   _fogColor: {r: 1, g: 1, b: 1, a: 0}
   _fogDensity: 0
-  _maxDistance: 706.6
-  _maxIterations: 2275
-  _accuracy: 0.0058
-  _modInterval: {x: 20, y: 20, z: 20}
-  _sphere1: {x: 0, y: 0, z: 0, w: 0}
+  _maxDistance: 1000
+  _maxIterations: 173
+  _accuracy: 0.0081
+  _repeatX: 1
+  _repeatY: 0
+  _repeatZ: 0
+  _modInterval: {x: 6, y: 6, z: 6}
+  _sphere1: {x: 0, y: 0, z: 0, w: 10.21}
   _box1: {x: 0, y: 0, z: 0, w: 8}
-  _recursiveTet1: {x: 0, y: 0, z: 0, w: 1.88}
-  _recursiveTet1Offset: 15
-  _recursiveTet1Iterations: 13
+  _recursiveTet1: {x: 0, y: 0, z: 0, w: 1.96}
+  _recursiveTet1Offset: 3.29
+  _recursiveTet1Iterations: 14
   _mandelBulb1: {x: 0, y: 0, z: 0}
   _mandelBulb1Power: 6.5
   _mandelBulb1Bailout: 1.77
-  _mandelBulb1Iterations: 575
+  _mandelBulb1Iterations: 501
   _mandelBox1: {x: 0, y: 0, z: 0}
-  _mandelBox1FoldLimit: {x: 1.17, y: 0.64, z: 1.61}
-  _mandelBox1Scale: 2.46
-  _mandelBox1SphereRadius: 0.1
-  _mandelBox1Iterations: 13
+  _mandelBox1FoldLimit: {x: 1, y: 1, z: 1.63}
+  _mandelBox1Scale: 1.73
+  _mandelBox1SphereRadius: 0.02
+  _mandelBox1Iterations: 41
   _apollonian1: {x: 0, y: 0, z: 0}
-  _apollonian1Scale: 0.65
-  _apollonian1Iterations: 18
-  _apollonian1Size: {x: 1, y: 1, z: 1.39}
+  _apollonian1Scale: 1.33
+  _apollonian1Iterations: 30
+  _apollonian1Size: {x: 1, y: 1, z: 1.3}

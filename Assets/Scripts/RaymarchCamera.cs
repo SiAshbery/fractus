@@ -45,6 +45,10 @@ public class RaymarchCamera : SceneViewFilter
     public Light _directionLight;
     public Color _mainCol;
     public float _lightIntensity, _shadowIntensity, _shadowPenumbra;
+    [Range(0, 500)]
+    public float _specularHighlight;
+    [Range(0,2)]
+    public float _specularIntensity;
     public Vector2 _shadowDistance;
 
     [Header("Ambient Occlusion")]
@@ -65,7 +69,7 @@ public class RaymarchCamera : SceneViewFilter
     // set the acurracy of ray marching hits
     [Range(0.1f, 0.001f)]
     public float _accuracy;
-
+    public bool _repeatX, _repeatY, _repeatZ;
     // Mod repetition interval
     public Vector3 _modInterval;
 
@@ -117,6 +121,9 @@ public class RaymarchCamera : SceneViewFilter
         _raymarchMaterial.SetFloat("_maxDistance", _maxDistance);
         _raymarchMaterial.SetInt("_maxIterations", _maxIterations);
         _raymarchMaterial.SetFloat("_accuracy", _accuracy);
+        _raymarchMaterial.SetFloat(" _repeatX", _repeatX ? 1.0f : 0.0f);
+        _raymarchMaterial.SetFloat(" _repeatY", _repeatY ? 1.0f : 0.0f);
+        _raymarchMaterial.SetFloat(" _repeatZ", _repeatZ ? 1.0f : 0.0f);
         // Lighting
         _raymarchMaterial.SetVector("_lightDir", _directionLight ? _directionLight.transform.forward : Vector3.down);
         _raymarchMaterial.SetColor("_lightCol", _directionLight ?_directionLight.color : new Color(1,1,1));
@@ -127,6 +134,8 @@ public class RaymarchCamera : SceneViewFilter
         _raymarchMaterial.SetFloat("_shadowIntensity", _shadowIntensity);
         _raymarchMaterial.SetVector("_shadowDistance", _shadowDistance);
         _raymarchMaterial.SetFloat("_shadowPenumbra", _shadowPenumbra);
+        _raymarchMaterial.SetFloat("_specularHighlight", _specularHighlight);
+        _raymarchMaterial.SetFloat("_specularIntensity", _specularIntensity);
         // AO
         _raymarchMaterial.SetFloat("_aoStepSize", _aoStepSize);
         _raymarchMaterial.SetFloat("_aoIntensity", _aoIntensity);

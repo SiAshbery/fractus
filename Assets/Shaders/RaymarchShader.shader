@@ -55,7 +55,7 @@
             uniform fixed4 _lightCol;
 			uniform fixed4 _mainCol, _fogColor;
 			uniform float _lightIntensity, _fogDensity;
-			uniform float _shadowIntensity;
+			uniform float _shadowIntensity, _specularHighlight, _specularIntensity;
 			uniform float2 _shadowDistance;
 			uniform float _shadowPenumbra;
             // Set shape attributes in editor
@@ -66,6 +66,8 @@
             uniform float _mandelBulb1Power, _mandelBulb1Bailout, _mandelBox1Scale, _mandelBox1SphereRadius, _apollonian1Scale;
 			// Set repetation interval for modulus
 			uniform float3 _modInterval, _mandelBox1FoldLimit, _apollonian1Size;
+
+			uniform float _repeatX, _repeatY, _repeatZ;
 
             struct appdata
             {
@@ -105,22 +107,26 @@
 
             float distanceField(float3 p)
             {
+				float time = _Time;
 				// p = position
 				// Repeat along axis:
 				// First argument is the position and is an inout which means it is changed by the function
 				// Second argument is the size of the repeated chunk and should be double the size of the shape
 				// I.E a Cube that is 2x2x2 would need a Mod size of 4 to fit perfectly into the repeation.
-				//float modX = pMod1(p.x, _modInterval.x);
-				//float modY = pMod1(p.y, _modInterval.y);
-				//float modZ = pMod1(p.z, _modInterval.z);
-				//float Sphere1 = sdSphere(p - _sphere1.xyz, _sphere1.w);
+				// float modX = pMod1(p.x, _modInterval.x);
+				// float modY = pMod1(p.y, _modInterval.y);
+				// float modZ = pMod1(p.z, _modInterval.z);
+			
+				float Sphere1 = sdSphere(p - _sphere1.xyz, _sphere1.w);
 				//float Box1 = sdBox(p - _box1.xyz, _box1.www);
 				//float mandelBulb = sdMandelBulb(p - _mandelBulb1.xyz, _mandelBulb1Power, _mandelBulb1Bailout, _mandelBulb1Iterations);
-                float mandelBox = sdMandelBox(p - _mandelBox1.xyz, _mandelBox1Iterations, _mandelBox1Scale, _mandelBox1SphereRadius, _mandelBox1FoldLimit.xyz);
-                // float apollonian = sdApollonian(p - _apollonian1.xyz, _apollonian1Scale, _apollonian1Iterations, _apollonian1Size);
+                //float mandelBox = sdMandelBox(p - _mandelBox1.xyz, _mandelBox1Iterations, _mandelBox1Scale + abs(sin(time) * cos(time)), _mandelBox1SphereRadius, _mandelBox1FoldLimit.xyz);
+				//_apollonian1Size.x += abs(sin(time) * cos(time)) * 0.002;
+				//_apollonian1Size.z -= abs(sin(time) * cos(time)) * 0.002;
+                //float apollonian = sdApollonian(p - _apollonian1.xyz, _apollonian1Scale, _apollonian1Iterations, _apollonian1Size);
                 // float sierpinskiTri = sdRTet(p - _recursiveTet1.xyz, _recursiveTet1.w,_recursiveTet1Offset, _recursiveTet1Iterations);
                 //float julia = sdJulia(p);
-				return mandelBox;
+				return Sphere1;
 				//return opS(Sphere1,Box1);
                 //return sdRTet(p - _recursiveTet1.xyz, _recursiveTet1.w,_recursiveTet1Offset, _recursiveTet1Iterations);
             }
@@ -226,8 +232,18 @@
                 return lerp( rgb, color, fogAmount );
             }
 
-			float3 Shading(float3 p, float3 n, float t) {
+			float3 applySpecular(float3 col, float3 reflected, float shadow) {
+				float specular = max(dot(reflected, _lightDir), 0.0);
+				specular = pow(specular, _specularHighlight);
+				col += specular * _lightCol * shadow * _specularIntensity;
+				return col;
+			}
+
+			float3 Shading(float3 p, float3 n, float t, float3 ray) {
 				float3 result;
+
+				float3 reflected = ray.xyz - 2.0 * dot(ray.xyz, n) * n;
+
 				// Diffuse color
 				float3 color = _mainCol.rgb;
 				// Directional light
@@ -241,7 +257,14 @@
                 if (_fogDensity > 0) {
                     result = applySimpleFog(result, t);
                 }
+
+				if (_specularHighlight > 0) {
+					result = applySpecular(result, reflected, shadow);
+				}
+
 				return result;
+
+
 			}
 
   
@@ -286,7 +309,7 @@
                         float3 n = getNormal(p);
                         // light!
                         // Lighting requires the dot product of the inversed lighting direction and the normal direction
-						float3 s = Shading(p, n, t);
+						float3 s = Shading(p, n, t, -rd);
                         result = fixed4(s,1);
                         break;
                     }
