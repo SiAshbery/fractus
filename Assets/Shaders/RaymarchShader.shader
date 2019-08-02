@@ -284,7 +284,7 @@
             fixed4 raymarching(float3 ro, float3 rd, float depth)
             {
                 // min distance to surface
-	            float min_d = 1.0;
+	            float minD = 1.0;
                 // ro = ray origin, rd = ray direction
                 fixed4 result = fixed4(0,0,0,1);
 
@@ -303,13 +303,12 @@
                         // for rays that miss the distance filed we need to set the alpha value to 0
                         // So that we can render the unity scene
                         float alpha;
-                        
-                        if (min_d > 0.8) {
-                            alpha = normalize(min_d);
-                         } else {
-                            alpha = min_d;
-                         }
-                        result = fixed4(applyGlow(float3(0,0,0), min_d),alpha);
+
+                        // Inversed normalization of the minimum distance.
+                        // The closer it is to the surface 
+                        alpha = max(0, 1 - (minD*_glowSharpness));
+            
+                        result = fixed4(applyGlow(float3(0,0,0), minD),alpha);
                       
                         break;
                     }
@@ -331,14 +330,14 @@
                         float3 n = getNormal(p);
                         // light!
                         // Lighting requires the dot product of the inversed lighting direction and the normal direction
-						float3 s = Shading(p, n, t, -rd, min_d);
+						float3 s = Shading(p, n, t, -rd, minD);
                         result = fixed4(s, 1);
                         break;
                     }
 
                     // If we have not met any break criteria, track the distance traveled
                     t += d;
-                    min_d = min(min_d, _glowSharpness * d / t);
+                    minD = min(minD, _glowSharpness * d / t);
                 }
 
                 return result;
