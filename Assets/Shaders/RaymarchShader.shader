@@ -53,9 +53,9 @@
             //lighting
             uniform float3 _lightDir;
             uniform fixed4 _lightCol;
-			uniform fixed4 _mainCol, _fogColor;
+			uniform fixed4 _mainCol, _fogColor, _glowColor;
 			uniform float _lightIntensity, _fogDensity;
-			uniform float _shadowIntensity, _specularHighlight, _specularIntensity;
+			uniform float _shadowIntensity, _specularHighlight, _specularIntensity, _glowSharpness;
 			uniform float2 _shadowDistance;
 			uniform float _shadowPenumbra;
             // Set shape attributes in editor
@@ -118,7 +118,7 @@
 				// float modZ = pMod1(p.z, _modInterval.z);
 			
 				float Sphere1 = sdSphere(p - _sphere1.xyz, _sphere1.w);
-				//float Box1 = sdBox(p - _box1.xyz, _box1.www);
+				float Box1 = sdBox(p - _box1.xyz, _box1.www);
 				//float mandelBulb = sdMandelBulb(p - _mandelBulb1.xyz, _mandelBulb1Power, _mandelBulb1Bailout, _mandelBulb1Iterations);
                 //float mandelBox = sdMandelBox(p - _mandelBox1.xyz, _mandelBox1Iterations, _mandelBox1Scale + abs(sin(time) * cos(time)), _mandelBox1SphereRadius, _mandelBox1FoldLimit.xyz);
 				//_apollonian1Size.x += abs(sin(time) * cos(time)) * 0.002;
@@ -126,8 +126,8 @@
                 //float apollonian = sdApollonian(p - _apollonian1.xyz, _apollonian1Scale, _apollonian1Iterations, _apollonian1Size);
                 // float sierpinskiTri = sdRTet(p - _recursiveTet1.xyz, _recursiveTet1.w,_recursiveTet1Offset, _recursiveTet1Iterations);
                 //float julia = sdJulia(p);
-				return Sphere1;
-				//return opS(Sphere1,Box1);
+				//return Sphere1;
+				return min(Sphere1,Box1);
                 //return sdRTet(p - _recursiveTet1.xyz, _recursiveTet1.w,_recursiveTet1Offset, _recursiveTet1Iterations);
             }
 
@@ -238,8 +238,13 @@
 				col += specular * _lightCol * shadow * _specularIntensity;
 				return col;
 			}
+			
+			float3 applyGlow(float3 col, float minD) {
+			    col += (1.0 - minD) * (1.0 - minD) * _glowColor;
+			    return col;
+			}
 
-			float3 Shading(float3 p, float3 n, float t, float3 ray) {
+			float3 Shading(float3 p, float3 n, float t, float3 ray, float minD) {
 				float3 result;
 
 				float3 reflected = ray.xyz - 2.0 * dot(ray.xyz, n) * n;
@@ -254,13 +259,20 @@
 				float ao = ambientOcclusion(p, n);
                
 				result = color * light * shadow * ao;
-                if (_fogDensity > 0) {
-                    result = applySimpleFog(result, t);
-                }
-
+            
 				if (_specularHighlight > 0) {
 					result = applySpecular(result, reflected, shadow);
 				}
+				
+				if (_glowSharpness > 0) {
+				    result = applyGlow(result, minD);
+				}
+				
+				// Fog should always be calculated last
+				if (_fogDensity > 0) {
+                    result = applySimpleFog(result, t);
+                }
+
 
 				return result;
 
@@ -271,6 +283,8 @@
 
             fixed4 raymarching(float3 ro, float3 rd, float depth)
             {
+                // min distance to surface
+	            float min_d = 1.0;
                 // ro = ray origin, rd = ray direction
                 fixed4 result = fixed4(0,0,0,1);
 
@@ -288,7 +302,15 @@
                     {
                         // for rays that miss the distance filed we need to set the alpha value to 0
                         // So that we can render the unity scene
-                        result = fixed4(rd, 0);
+                        float alpha;
+                        
+                        if (min_d > 0.8) {
+                            alpha = normalize(min_d);
+                         } else {
+                            alpha = min_d;
+                         }
+                        result = fixed4(applyGlow(float3(0,0,0), min_d),alpha);
+                      
                         break;
                     }
 
@@ -309,13 +331,14 @@
                         float3 n = getNormal(p);
                         // light!
                         // Lighting requires the dot product of the inversed lighting direction and the normal direction
-						float3 s = Shading(p, n, t, -rd);
-                        result = fixed4(s,1);
+						float3 s = Shading(p, n, t, -rd, min_d);
+                        result = fixed4(s, 1);
                         break;
                     }
 
                     // If we have not met any break criteria, track the distance traveled
                     t += d;
+                    min_d = min(min_d, _glowSharpness * d / t);
                 }
 
                 return result;

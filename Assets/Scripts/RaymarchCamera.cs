@@ -50,6 +50,8 @@ public class RaymarchCamera : SceneViewFilter
     [Range(0,2)]
     public float _specularIntensity;
     public Vector2 _shadowDistance;
+    public Color _glowColor;
+    public float _glowSharpness;
 
     [Header("Ambient Occlusion")]
     public float _aoStepSize;
@@ -136,6 +138,8 @@ public class RaymarchCamera : SceneViewFilter
         _raymarchMaterial.SetFloat("_shadowPenumbra", _shadowPenumbra);
         _raymarchMaterial.SetFloat("_specularHighlight", _specularHighlight);
         _raymarchMaterial.SetFloat("_specularIntensity", _specularIntensity);
+        _raymarchMaterial.SetVector("_glowColor", _glowColor);
+        _raymarchMaterial.SetFloat("_glowSharpness", _glowSharpness);
         // AO
         _raymarchMaterial.SetFloat("_aoStepSize", _aoStepSize);
         _raymarchMaterial.SetFloat("_aoIntensity", _aoIntensity);

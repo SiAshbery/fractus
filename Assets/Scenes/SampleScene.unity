@@ -193,7 +193,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 4.55e-43, y: 1.39e-43, z: 0, w: -1.5376072}
+  m_BoundingSphereOverride: {x: 1.6494419e+28, y: 3991.2756, z: 7.564175e+28, w: 8.8983745e+11}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -204,13 +204,106 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170076733}
-  m_LocalRotation: {x: -0.7985593, y: 0.20011249, z: -0.4800722, w: -0.30296665}
+  m_LocalRotation: {x: -0.6805488, y: -0.03840411, z: -0.50641656, w: -0.5281295}
   m_LocalPosition: {x: -0.58, y: 1.455, z: -0.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 42.533, y: 838.843, z: 1262.233}
+  m_LocalEulerAnglesHint: {x: 42.839, y: 804.463, z: 1206.796}
+--- !u!1 &329597753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 329597757}
+  - component: {fileID: 329597756}
+  - component: {fileID: 329597755}
+  - component: {fileID: 329597754}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &329597754
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329597753}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &329597755
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329597753}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &329597756
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329597753}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &329597757
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329597753}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.63346, y: 6.7, z: 18.2}
+  m_LocalScale: {x: 12.2, y: 12.2, z: 12.2}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,13 +381,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: -0.1878099, y: 0, z: 0, w: 0.98220545}
+  m_LocalRotation: {x: -0.05176222, y: 0.4434929, z: -0.021344515, w: 0.8945274}
   m_LocalPosition: {x: 0, y: 4.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -21.65, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -4.2250004, y: 52.922, z: -4.8370004}
 --- !u!114 &534669906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,23 +406,25 @@ MonoBehaviour:
   _lightIntensity: 1
   _shadowIntensity: 1
   _shadowPenumbra: 2.66
-  _specularHighlight: 57
-  _specularIntensity: 0.43
-  _shadowDistance: {x: 1.6, y: 100}
+  _specularHighlight: 3
+  _specularIntensity: 0.51
+  _shadowDistance: {x: 1.69, y: 100}
+  _glowColor: {r: 1, g: 0, b: 0, a: 0}
+  _glowSharpness: 13.59
   _aoStepSize: 0.32
   _aoIntensity: 0.07
   _aoIterations: 3
-  _fogColor: {r: 1, g: 1, b: 1, a: 0}
-  _fogDensity: 0
+  _fogColor: {r: 0.13737094, g: 0.1981132, b: 0.19215947, a: 0}
+  _fogDensity: 0.005
   _maxDistance: 1000
-  _maxIterations: 173
-  _accuracy: 0.0081
+  _maxIterations: 1600
+  _accuracy: 0.0464
   _repeatX: 1
   _repeatY: 0
   _repeatZ: 0
   _modInterval: {x: 6, y: 6, z: 6}
   _sphere1: {x: 0, y: 0, z: 0, w: 10.21}
-  _box1: {x: 0, y: 0, z: 0, w: 8}
+  _box1: {x: 27.09, y: 0, z: 0, w: 8}
   _recursiveTet1: {x: 0, y: 0, z: 0, w: 1.96}
   _recursiveTet1Offset: 3.29
   _recursiveTet1Iterations: 14
@@ -339,10 +434,10 @@ MonoBehaviour:
   _mandelBulb1Iterations: 501
   _mandelBox1: {x: 0, y: 0, z: 0}
   _mandelBox1FoldLimit: {x: 1, y: 1, z: 1.63}
-  _mandelBox1Scale: 1.73
+  _mandelBox1Scale: 5.13
   _mandelBox1SphereRadius: 0.02
   _mandelBox1Iterations: 41
   _apollonian1: {x: 0, y: 0, z: 0}
-  _apollonian1Scale: 1.33
-  _apollonian1Iterations: 30
+  _apollonian1Scale: 2.37
+  _apollonian1Iterations: 19
   _apollonian1Size: {x: 1, y: 1, z: 1.3}
