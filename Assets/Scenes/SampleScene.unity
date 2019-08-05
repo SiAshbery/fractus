@@ -193,7 +193,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.6494419e+28, y: 3991.2756, z: 7.564175e+28, w: 8.8983745e+11}
+  m_BoundingSphereOverride: {x: 4.5804e-41, y: 9.62965e-35, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -204,13 +204,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170076733}
-  m_LocalRotation: {x: -0.6805488, y: -0.03840411, z: -0.50641656, w: -0.5281295}
+  m_LocalRotation: {x: -0.7850456, y: 0.14798489, z: -0.39541057, w: -0.45327076}
   m_LocalPosition: {x: -0.58, y: 1.455, z: -0.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 42.839, y: 804.463, z: 1206.796}
+  m_LocalEulerAnglesHint: {x: 55.966003, y: 839.593, z: 1246.978}
 --- !u!1 &329597753
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +298,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 329597753}
   m_LocalRotation: {x: -0, y: -0.15083884, z: -0, w: 0.9885584}
-  m_LocalPosition: {x: 15.97, y: 6.7, z: 5.98}
+  m_LocalPosition: {x: 12.37, y: 6.7, z: 4.86}
   m_LocalScale: {x: 12.2, y: 12.2, z: 12.2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -406,18 +406,19 @@ MonoBehaviour:
   _lightIntensity: 1
   _shadowIntensity: 1
   _shadowPenumbra: 2.66
-  _specularHighlight: 3
-  _specularIntensity: 0.51
+  _specularHighlight: 225
+  _specularIntensity: 2
   _shadowDistance: {x: 1.69, y: 100}
-  _glowColor: {r: 1, g: 0, b: 0, a: 0}
-  _glowSharpness: 4.13
+  _glowColor: {r: 0, g: 1, b: 0.880682, a: 0}
+  _glowSharpness: 13.9
+  _patternTex: {fileID: 2800000, guid: 3f4c6d2d121974770a7fab944d886f41, type: 3}
   _aoStepSize: 0.32
   _aoIntensity: 0.07
   _aoIterations: 3
   _fogColor: {r: 0.13737094, g: 0.1981132, b: 0.19215947, a: 0}
   _fogDensity: 0.005
-  _maxDistance: 1000
-  _maxIterations: 1600
+  _maxDistance: 166.27
+  _maxIterations: 500
   _accuracy: 0.0464
   _repeatX: 1
   _repeatY: 0

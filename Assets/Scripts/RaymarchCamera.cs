@@ -51,7 +51,10 @@ public class RaymarchCamera : SceneViewFilter
     public float _specularIntensity;
     public Vector2 _shadowDistance;
     public Color _glowColor;
+    [Range(0,20)]
     public float _glowSharpness;
+
+    public Texture _patternTex;
 
     [Header("Ambient Occlusion")]
     public float _aoStepSize;
@@ -167,8 +170,9 @@ public class RaymarchCamera : SceneViewFilter
         _raymarchMaterial.SetFloat("_apollonian1Scale", _apollonian1Scale);
         _raymarchMaterial.SetInt("_apollonian1Iterations", _apollonian1Iterations);
         _raymarchMaterial.SetVector("_apollonian1Size", _apollonian1Size);
-    // Repetition
-    _raymarchMaterial.SetVector("_modInterval", _modInterval);
+        _raymarchMaterial.SetTexture("_patternTex", _patternTex);
+        // Repetition
+        _raymarchMaterial.SetVector("_modInterval", _modInterval);
 
         // Here we create the quad which represents our screen.
         // It is important that it's corner corresponds correctly to the corners of the frustum.
