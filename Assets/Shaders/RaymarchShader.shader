@@ -256,18 +256,17 @@
             }
 
             float3 applySurfaceCol(float3 col, float3 p, float3 n) {
-                float3 result = texcube( _patternTex, 0.5*p, n ).xyz;
-                //col = col*(0.2+0.8*texcube( iChannel2, 4.0*vec3(2.0,8.0,2.0)*pos, nor ).x);
-                //vec3 verde = vec3(1.0,0.9,0.2);
-                //verde *= texture( iChannel2, pos.xz ).xyz;
-                //col = mix( col, 0.8*verde, hh );
+                float hh = 1.0 - smoothstep( -2.0, 1.0, p.y );
+
+                // the number that p is multiplied by controls texture size.
+                float3 result = texcube( _patternTex, 0.05*p, n ).xyz;
+                result = result*(0.2+0.8*texcube( _patternTex, 4.0*float3(2.0,8.0,2.0)*p, n ).x);
+                
         
                 float vv = smoothstep( 0.0, 0.8, n.y )*smoothstep(0.0, 0.1, p.y-0.8 );
-                //verde = vec3(0.2,0.45,0.1);
-                //verde *= texture( iChannel2, 30.0*pos.xz ).xyz;
-                //verde += 0.2*texture( iChannel2, 1.0*pos.xz ).xyz;
+               
                 vv *= smoothstep( 0.0, 0.5, tex2D( _patternTex, 0.1*p.xz + 0.01*n.x ).x );
-                //col = mix( col, verde*1.1, vv );
+       
                 result = lerp(col,result,vv);
                 return result;
             }
