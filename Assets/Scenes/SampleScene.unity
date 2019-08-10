@@ -94,8 +94,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
-    m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -147,7 +147,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 9
   m_Type: 1
-  m_Color: {r: 0.9433962, g: 0.8494501, b: 0.5918476, a: 1}
+  m_Color: {r: 0.8160377, g: 1, b: 0.9785168, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -229,7 +229,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &329597754
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -257,7 +257,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -269,7 +268,6 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -297,13 +295,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 329597753}
-  m_LocalRotation: {x: -0, y: -0.15083884, z: -0, w: 0.9885584}
-  m_LocalPosition: {x: 12.37, y: 6.7, z: 4.86}
-  m_LocalScale: {x: 12.2, y: 12.2, z: 12.2}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 39.4, y: 6.68, z: 209.37}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: -17.351002, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,11 +353,11 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 10000
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -381,13 +379,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: 0.57243484, y: 0.36084372, z: -0.3205016, w: 0.6628642}
-  m_LocalPosition: {x: -6.72, y: 29, z: 2.9}
+  m_LocalRotation: {x: -0, y: -0.31208608, z: 0, w: -0.9500539}
+  m_LocalPosition: {x: 40, y: 14.1, z: 186.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 81.97, y: 52.922, z: -4.8370004}
+  m_LocalEulerAnglesHint: {x: 0, y: 396.37, z: 0}
 --- !u!114 &534669906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,24 +400,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shader: {fileID: 4800000, guid: 3418dedbe09f543bd8d3d8d5e01e0a53, type: 3}
   _directionLight: {fileID: 170076734}
-  _mainCol: {r: 0.77254903, g: 0.77859366, b: 0.8509804, a: 0}
+  _mainCol: {r: 1, g: 0.57578367, b: 0.5424528, a: 0}
   _lightIntensity: 1
   _shadowIntensity: 1
   _shadowPenumbra: 2.66
-  _specularHighlight: 225
-  _specularIntensity: 2
+  _specularHighlight: 7
+  _specularIntensity: 0.23
   _shadowDistance: {x: 1.69, y: 100}
   _glowColor: {r: 0, g: 1, b: 0.880682, a: 0}
   _glowSharpness: 13.9
-  _patternTex: {fileID: 2800000, guid: 2d882df15e73449449491fc1569834f1, type: 3}
+  _patternTex: {fileID: 2800000, guid: 3aac3087967ea4fae858ec0494fd24d9, type: 3}
+  _patternTex2: {fileID: 2800000, guid: 3f4c6d2d121974770a7fab944d886f41, type: 3}
   _aoStepSize: 0.32
   _aoIntensity: 0.07
   _aoIterations: 3
   _fogColor: {r: 0.13737094, g: 0.1981132, b: 0.19215947, a: 0}
-  _fogDensity: 0.005
-  _maxDistance: 500
+  _fogDensity: 0.009
+  _maxDistance: 10000
   _maxIterations: 500
-  _accuracy: 0.001
+  _accuracy: 0.0611
   _repeatX: 1
   _repeatY: 0
   _repeatZ: 0
@@ -433,12 +432,12 @@ MonoBehaviour:
   _mandelBulb1Power: 6.5
   _mandelBulb1Bailout: 1.77
   _mandelBulb1Iterations: 501
-  _mandelBox1: {x: -5.56, y: 0, z: 6.18}
-  _mandelBox1FoldLimit: {x: 1, y: 1, z: 1.63}
-  _mandelBox1Scale: 1.4
-  _mandelBox1SphereRadius: 0.02
-  _mandelBox1Iterations: 41
-  _apollonian1: {x: 0, y: 0, z: 0}
-  _apollonian1Scale: 2.37
-  _apollonian1Iterations: 19
-  _apollonian1Size: {x: 1, y: 1, z: 1.3}
+  _mandelBox1: {x: 0, y: 0, z: 0}
+  _mandelBox1FoldLimit: {x: 1.03, y: 0.85, z: 1.41}
+  _mandelBox1Scale: 2.4
+  _mandelBox1SphereRadius: 0.09
+  _mandelBox1Iterations: 42
+  _apollonian1: {x: 1, y: 168, z: 0.66}
+  _apollonian1Scale: 0.72
+  _apollonian1Iterations: 17
+  _apollonian1Size: {x: 1, y: 1, z: 1.35}

@@ -55,6 +55,7 @@ public class RaymarchCamera : SceneViewFilter
     public float _glowSharpness;
 
     public Texture _patternTex;
+    public Texture _patternTex2;
 
     [Header("Ambient Occlusion")]
     public float _aoStepSize;
@@ -171,6 +172,7 @@ public class RaymarchCamera : SceneViewFilter
         _raymarchMaterial.SetInt("_apollonian1Iterations", _apollonian1Iterations);
         _raymarchMaterial.SetVector("_apollonian1Size", _apollonian1Size);
         _raymarchMaterial.SetTexture("_patternTex", _patternTex);
+        _raymarchMaterial.SetTexture("_patternTex2", _patternTex2);
         // Repetition
         _raymarchMaterial.SetVector("_modInterval", _modInterval);
 
