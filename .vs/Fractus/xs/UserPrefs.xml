@@ -1,20 +1,20 @@
 ﻿<Properties StartupConfiguration="{12C3061B-6FDE-E761-1F8B-55F779B058E9}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Shaders/DistanceFunctions.cginc">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SceneViewFilter.cs">
     <Files>
       <File FileName="Assets/Scripts/RaymarchCamera.cs" Line="99" Column="32" />
-      <File FileName="Assets/Scripts/SceneViewFilter.cs" />
-      <File FileName="Assets/Shaders/DistanceFunctions.cginc" Line="1" Column="1" />
-      <File FileName="Assets/Shaders/RaymarchShader.shader" Line="290" Column="29" NotebookId="1" />
+      <File FileName="Assets/Scripts/SceneViewFilter.cs" Line="1" Column="1" />
+      <File FileName="Assets/Shaders/DistanceFunctions.cginc" />
+      <File FileName="Assets/Shaders/RaymarchShader.shader" Line="266" Column="67" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Fractus" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="Scripts" expanded="True" />
-              <Node name="Shaders" expanded="True">
-                <Node name="DistanceFunctions.cginc" selected="True" />
+              <Node name="Scripts" expanded="True">
+                <Node name="SceneViewFilter.cs" selected="True" />
               </Node>
+              <Node name="Shaders" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -23,7 +23,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="6ee31ca3-4e21-4c41-abe8-857e868f9942" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="e8e58633-723d-4b05-8861-1acc752b2705" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
