@@ -34,6 +34,7 @@
             uniform sampler2D _CameraDepthTexture;
 
             uniform sampler2D _patternTex;
+            uniform sampler2D _patternTex2;
 
             // To create a raymarching shader we need to get the origin position of the ray which is the camera's world space position.
             // Unity has a built in variable for this called _WorldSpaceCameraPos
@@ -106,6 +107,7 @@
 
                 return o;
             }
+            
 
             float distanceField(float3 p)
             {
@@ -122,15 +124,15 @@
 				//float Sphere1 = sdSphere(p - _sphere1.xyz, _sphere1.w);
 				//float Box1 = sdBox(p - _box1.xyz, _box1.www);
 				//float mandelBulb = sdMandelBulb(p - _mandelBulb1.xyz, _mandelBulb1Power, _mandelBulb1Bailout, _mandelBulb1Iterations);
-                float mandelBox = sdMandelBox(p - _mandelBox1.xyz, _mandelBox1Iterations, _mandelBox1Scale, _mandelBox1SphereRadius, _mandelBox1FoldLimit.xyz);
+                //float mandelBox = sdMandelBox(p - _mandelBox1.xyz, _mandelBox1Iterations, _mandelBox1Scale, _mandelBox1SphereRadius, _mandelBox1FoldLimit.xyz);
 				//_apollonian1Size.x += abs(sin(time) * cos(time)) * 0.002;
 				//_apollonian1Size.z -= abs(sin(time) * cos(time)) * 0.002;
-                //float apollonian = sdApollonian(p - _apollonian1.xyz, _apollonian1Scale, _apollonian1Iterations, _apollonian1Size);
+                float apollonian = sdApollonian(p - _apollonian1.xyz, _apollonian1Scale, _apollonian1Iterations, _apollonian1Size);
                 //float sierpinskiTri = sdRTet(p - _recursiveTet1.xyz, _recursiveTet1.w,_recursiveTet1Offset, _recursiveTet1Iterations);
                 //float julia = sdJulia(p);
 				//return Sphere1;
-				//return apollonian;
-                return mandelBox;
+				return apollonian;
+                //return mandelBox;
                 //return sdRTet(p - _recursiveTet1.xyz, _recursiveTet1.w,_recursiveTet1Offset, _recursiveTet1Iterations);
             }
 
@@ -248,14 +250,37 @@
                 }
 			    return col;
 			}
+			
 
+   
             float4 texcube( sampler2D sam, in float3 p, in float3 n ) {
                 float4 x = tex2D( sam, p.yz );
                 float4 y = tex2D( sam, p.zx );
                 float4 z = tex2D( sam, p.xy );
-                return x*abs(n.x) + y*abs(n.y) + z*abs(n.z);
+                return (x*abs(n.x) + y*abs(n.y) + z*abs(n.z))/(abs(n.x)+abs(n.y)+abs(n.z));
             }
+            
+            float3 surfaceColor(float3 p) {  
+                p = p.xzy;
+                float r2	= dot(p,p);
+                float3 CSize = float3(1., 1., 1.3);
+	            for( int i=0; i < 5;i++ ) {
+		            float3 p1= 2.0 * clamp(p, -CSize,CSize)-p;
+		            p = p1;
+		            r2 = dot(p,p);
+                    //float r2 = dot(p,p+sin(p.z*.3)); //Alternate fractal
+		            float k = max((2.)/(r2), 0.027);
+		            p *= k;
+	            }
+                return float3(tex2D(_patternTex2, float2(p.x+p.z, p.y)*.2).xyz) + float3(.4, .2, 0.2);
+               }
 
+
+            float3 applyAlbedo(float3 col, float3 p, float3 n) {
+                float3 result = col;
+                result += texcube(_patternTex, p*1.3, n).xyz;
+                return result;
+            }
             float3 applySurfaceCol(float3 col, float3 p, float3 n) {
                 float hh = 1.0 - smoothstep( -2.0, 1.0, p.y );
 
@@ -280,7 +305,7 @@
 				// Diffuse color
 				float3 color = _mainCol.rgb;
 
-                color = applySurfaceCol(color, p, n);
+                color = applyAlbedo(color, p, n);
 				// Directional light
 				float3 light = (_lightCol * dot(-_lightDir, n) * 0.5 + 0.5) * _lightIntensity;
 				// Shadows
