@@ -74,7 +74,9 @@ public class RaymarchCamera : SceneViewFilter
     public int _maxIterations;
     // set the acurracy of ray marching hits
     [Range(0.1f, 0.001f)]
-    public float _accuracy;
+    public float _minAcc = 0.1f;
+    [Range(1.0f, 0.1f)]
+    public float _maxAcc = 1.0f;
     public bool _repeatX, _repeatY, _repeatZ;
     // Mod repetition interval
     public Vector3 _modInterval;
@@ -126,7 +128,8 @@ public class RaymarchCamera : SceneViewFilter
         _raymarchMaterial.SetMatrix("_CamToWorld", _camera.cameraToWorldMatrix);
         _raymarchMaterial.SetFloat("_maxDistance", _maxDistance);
         _raymarchMaterial.SetInt("_maxIterations", _maxIterations);
-        _raymarchMaterial.SetFloat("_accuracy", _accuracy);
+        _raymarchMaterial.SetFloat("_minAcc", _minAcc);
+        _raymarchMaterial.SetFloat("_maxAcc", _maxAcc);
         _raymarchMaterial.SetFloat(" _repeatX", _repeatX ? 1.0f : 0.0f);
         _raymarchMaterial.SetFloat(" _repeatY", _repeatY ? 1.0f : 0.0f);
         _raymarchMaterial.SetFloat(" _repeatZ", _repeatZ ? 1.0f : 0.0f);

@@ -414,13 +414,14 @@ MonoBehaviour:
   _patternTex: {fileID: 2800000, guid: 3aac3087967ea4fae858ec0494fd24d9, type: 3}
   _patternTex2: {fileID: 2800000, guid: 3f4c6d2d121974770a7fab944d886f41, type: 3}
   _aoStepSize: 0.32
-  _aoIntensity: 0.5
+  _aoIntensity: 0.4
   _aoIterations: 3
   _fogColor: {r: 0.13737094, g: 0.1981132, b: 0.19215947, a: 0}
   _fogDensity: 0.009
-  _maxDistance: 10000
-  _maxIterations: 500
-  _accuracy: 0.1
+  _maxDistance: 1500
+  _maxIterations: 200
+  _minAcc: 0.001
+  _maxAcc: 1
   _repeatX: 1
   _repeatY: 0
   _repeatZ: 0
@@ -440,6 +441,6 @@ MonoBehaviour:
   _mandelBox1SphereRadius: 0.09
   _mandelBox1Iterations: 42
   _apollonian1: {x: 1, y: 168, z: 0.66}
-  _apollonian1Scale: 0.72
+  _apollonian1Scale: 0.71
   _apollonian1Iterations: 20
   _apollonian1Size: {x: 1, y: 1, z: 1.35}

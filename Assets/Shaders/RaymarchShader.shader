@@ -52,7 +52,7 @@
             uniform float _maxDistance;
             // Set a max distance for rays to travel before they are abandoned
             uniform int _maxIterations;
-			uniform float _accuracy;
+			uniform float _minAcc, _maxAcc;
             //lighting
             uniform float3 _lightDir;
             uniform fixed4 _lightCol;
@@ -187,7 +187,7 @@
 				// if we get to our max distance(maxt) we have no shadows and return 1.0
 				for (float t = mint; t < maxt;) {
 					float h = distanceField(ro + rd * t);
-					if (h < _accuracy) {
+					if (h < _minAcc) {
 						return 0.0;
 					}
 					t += h;
@@ -200,7 +200,7 @@
 				float result = 1.0;
 				for (float t = mint; t < maxt;) {
 					float h = distanceField(ro + rd * t);
-					if (h < _accuracy) {
+					if (h < _minAcc) {
 						return 0.0;
 					}
 					// instead of returning 0 for the rays that dont hit an object
@@ -360,10 +360,11 @@
                 // so that it can march along the ray until we hit a surface
 
                 // track distance traveled along ray direction
-                float t = 0;
+                float t = 0.01;
 
                 for (int i = 0; i < _maxIterations; i++)
                 {
+                    float precis = min(_maxAcc, _minAcc * t);
                     // Drawn the environment if we have gone too far without a collision.
                     // or if the distance we have gone beyond the depth value for a mesh in the unity scene.
                     if (t > _maxDistance || t >= depth )
@@ -397,7 +398,7 @@
                     // if the result of d is negative e.g. -1 We are instande an object
                     // if it is positive e.g. 1, we are outside (this is our distance from a surface)
                     // if it is 0 (or within a tolerance e.g. 0.01) we are at the surface.
-                    if (d < _accuracy)
+                    if (d < precis)
                     {
                         didHit = 1;
                         break;
