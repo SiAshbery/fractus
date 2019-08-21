@@ -58,7 +58,7 @@
             uniform fixed4 _lightCol;
 			uniform fixed4 _mainCol, _fogColor, _glowColor;
 			uniform float _lightIntensity, _fogDensity;
-			uniform float _shadowIntensity, _specularHighlight, _specularIntensity, _glowSharpness;
+			uniform float _shadowIntensity, _specularHighlight, _specularIntensity, _glowSharpness, _glowIntensity;
 			uniform float2 _shadowDistance;
 			uniform float _shadowPenumbra;
             // Set shape attributes in editor
@@ -71,6 +71,8 @@
 			uniform float3 _modInterval, _mandelBox1FoldLimit, _apollonian1Size;
 
 			uniform float _repeatX, _repeatY, _repeatZ;
+
+            float4 orb = float4(1000.0,1000.0,1.000,1.000);
 
             struct appdata
             {
@@ -246,7 +248,7 @@
 			
 			float3 applyGlow(float3 col, float minD) {
                 if (_glowSharpness > 0) {
-			        col += (1.0 - minD) * (1.0 - minD) * _glowColor;
+			        col += ((1.0 - minD) * (1.0 - minD) * _glowColor) * _glowIntensity;
                 }
 			    return col;
 			}
@@ -297,6 +299,13 @@
                 return result;
             }
 
+            float3 applyOrbitTrap(float3 col, float3 p) {  
+                float3 result = col;
+                result = lerp(result, float3(1.0,0.80,0.2), clamp(6.0*orb.y,0.0,1.0) );
+                result = lerp(result, float3(0.6,0.55,0.0), pow(clamp(1.0-2.0*orb.z,0.0,1.0),8.0) );
+                return(result);
+            }
+
 			float3 Shading(float3 p, float3 n, float t, float3 ray, float minD) {
 				float3 result;
 
@@ -305,7 +314,9 @@
 				// Diffuse color
 				float3 color = _mainCol.rgb;
 
-                color = applyAlbedo(color, p, n);
+                color = applyOrbitTrap(color, p);
+                //color = applyAlbedo(color, p, n);
+
 				// Directional light
 				float3 light = (_lightCol * dot(-_lightDir, n) * 0.5 + 0.5) * _lightIntensity;
 				// Shadows
@@ -320,8 +331,10 @@
 				}
 				
 				
-				//result = applyGlow(result, minD);
+               
+				result = applyGlow(result, dot(ray,n) * (_glowSharpness/20));
 				
+
                 //result = applyTexture(result, p);
                 float r2 = dot(p,p);
                 float4 orb = float4(1000.0,1000.0,1000.0,1000.0);
@@ -391,6 +404,8 @@
                     // get current position
                     // th origin vector added to the direction gives us our direction of travel which we multiply by how far we have gone to ge the current position.
                     p = ro + rd * t;
+                    float r2 = dot(p,p);
+                    orb = min(orb, float4(abs(p).xyz,r2)); 
                     // Check for a collision with a distance field
                     // d = closest distance to a surface
                     float d = distanceField(p);

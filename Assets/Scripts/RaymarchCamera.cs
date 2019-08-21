@@ -53,6 +53,8 @@ public class RaymarchCamera : SceneViewFilter
     public Color _glowColor;
     [Range(0,20)]
     public float _glowSharpness;
+    [Range(0,1)]
+    public float _glowIntensity = 1.0f;
 
     public Texture _patternTex;
     public Texture _patternTex2;
@@ -147,6 +149,7 @@ public class RaymarchCamera : SceneViewFilter
         _raymarchMaterial.SetFloat("_specularIntensity", _specularIntensity);
         _raymarchMaterial.SetVector("_glowColor", _glowColor);
         _raymarchMaterial.SetFloat("_glowSharpness", _glowSharpness);
+        _raymarchMaterial.SetFloat("_glowIntensity", _glowIntensity);
         // AO
         _raymarchMaterial.SetFloat("_aoStepSize", _aoStepSize);
         _raymarchMaterial.SetFloat("_aoIntensity", _aoIntensity);
