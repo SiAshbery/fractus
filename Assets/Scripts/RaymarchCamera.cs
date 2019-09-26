@@ -112,6 +112,19 @@ public class RaymarchCamera : SceneViewFilter
     public int _apollonian1Iterations;
     public Vector3 _apollonian1Size;
 
+    private float audioBand1;
+    private float audioBand2;
+    private float audioBand3;
+    private float audioBand4;
+    private float audioBand5;
+    private float audioBand6;
+    private float audioBand7;
+    private float audioBand8;
+
+    void Update() {
+        AssignAudioValues();
+    }
+
     // On render image to communicate with shader
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
@@ -124,6 +137,8 @@ public class RaymarchCamera : SceneViewFilter
             Graphics.Blit(source, destination);
             return;
         }
+
+        //
 
         //Set variables to shader
         _raymarchMaterial.SetMatrix("_CamFrustum", CamFrustum(_camera));
@@ -181,6 +196,15 @@ public class RaymarchCamera : SceneViewFilter
         _raymarchMaterial.SetTexture("_patternTex2", _patternTex2);
         // Repetition
         _raymarchMaterial.SetVector("_modInterval", _modInterval);
+
+        // Pass audio input values
+        _raymarchMaterial.SetFloat("_audioBand1", audioBand1);
+        _raymarchMaterial.SetFloat("_audioBand2", audioBand2);
+        _raymarchMaterial.SetFloat("_audioBand3", audioBand3);
+        _raymarchMaterial.SetFloat("_audioBand4", audioBand4);
+        _raymarchMaterial.SetFloat("_audioBand5", audioBand5);
+        _raymarchMaterial.SetFloat("_audioBand6", audioBand6);
+        _raymarchMaterial.SetFloat("_audioBand7", audioBand7);
 
         // Here we create the quad which represents our screen.
         // It is important that it's corner corresponds correctly to the corners of the frustum.
@@ -267,4 +291,16 @@ public class RaymarchCamera : SceneViewFilter
         // Now in the on render image we can set the matrix of the shader to the frustum matrix
     }
 
+    void AssignAudioValues() {
+        audioBand1 = AudioManager._freqBand[0];
+        audioBand2 = AudioManager._freqBand[1];
+        audioBand3 = AudioManager._freqBand[2];
+        audioBand4 = AudioManager._freqBand[3];
+        audioBand5 = AudioManager._freqBand[4];
+        audioBand6 = AudioManager._freqBand[5];
+        audioBand7 = AudioManager._freqBand[6];
+        audioBand8 = AudioManager._freqBand[7];
+    }
+
 }
+

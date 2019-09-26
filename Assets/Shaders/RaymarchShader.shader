@@ -70,6 +70,8 @@
 			// Set repetation interval for modulus
 			uniform float3 _modInterval, _mandelBox1FoldLimit, _apollonian1Size;
 
+			uniform float _audioBand1, _audioBand2, _audioBand3, _audioBand4, _audioBand5, _audioBand6, _audioBand7, _audioBand8;
+
 			uniform float _repeatX, _repeatY, _repeatZ;
 
             float4 orb = float4(1000.0,1000.0,1.000,1.000);
@@ -123,17 +125,17 @@
 				// float modY = pMod1(p.y, _modInterval.y);
 				// float modZ = pMod1(p.z, _modInterval.z);
 			
-				float Sphere1 = sdSphere(p - _sphere1.xyz, _sphere1.w);
-				float Box1 = sdBox(p - _box1.xyz, _box1.www);
+				//float Sphere1 = sdSphere(p - _sphere1.xyz, _sphere1.w + _audioBand3);
+				//float Box1 = sdBox(p - _box1.xyz, _box1.www);
 				//float mandelBulb = sdMandelBulb(p - _mandelBulb1.xyz, _mandelBulb1Power, _mandelBulb1Bailout, _mandelBulb1Iterations);
                 //float mandelBox = sdMandelBox(p - _mandelBox1.xyz, _mandelBox1Iterations, _mandelBox1Scale, _mandelBox1SphereRadius, _mandelBox1FoldLimit.xyz);
 				//_apollonian1Size.x += abs(sin(time) * cos(time)) * 0.002;
 				//_apollonian1Size.z -= abs(sin(time) * cos(time)) * 0.002;
-                //float apollonian = sdApollonian(p - _apollonian1.xyz, _apollonian1Scale, _apollonian1Iterations, _apollonian1Size);
+                float apollonian = sdApollonian(p - _apollonian1.xyz, _apollonian1Scale, _apollonian1Iterations, _apollonian1Size + float3(_audioBand1/10,_audioBand4/10,_audioBand8/10));
                 //float sierpinskiTri = sdRTet(p - _recursiveTet1.xyz, _recursiveTet1.w,_recursiveTet1Offset, _recursiveTet1Iterations);
                 //float julia = sdJulia(p);
-				return opS(Sphere1, Box1);
-				//return apollonian;
+				//return opS(Sphere1, Box1);
+				return apollonian;
                 //return mandelBox;
                 //return sdRTet(p - _recursiveTet1.xyz, _recursiveTet1.w,_recursiveTet1Offset, _recursiveTet1Iterations);
             }

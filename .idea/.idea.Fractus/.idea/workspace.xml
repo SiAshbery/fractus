@@ -11,32 +11,32 @@
   <component name="FileEditorManager">
     <splitter split-orientation="horizontal" split-proportion="0.48622274">
       <split-first>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Assets/Scripts/RaymarchCamera.cs">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="576">
-                  <caret line="141" column="67" selection-start-line="141" selection-start-column="67" selection-end-line="141" selection-end-column="67" />
+                <state relative-caret-position="3536">
+                  <caret line="221" column="5" lean-forward="true" selection-start-line="221" selection-start-column="5" selection-end-line="221" selection-end-column="5" />
                   <folding>
-                    <marker date="1564666275208" expanded="true" signature="6:78" ph="..." />
-                    <marker date="1564666275208" expanded="true" signature="180:10255" ph="{...}" />
-                    <marker date="1564666275208" expanded="true" signature="313:582" ph="{...}" />
-                    <marker date="1564666275208" expanded="true" signature="331:576" ph="{...}" />
-                    <marker date="1564666275208" expanded="true" signature="383:533" ph="{...}" />
-                    <marker date="1564666275208" expanded="true" signature="673:840" ph="{...}" />
-                    <marker date="1564666275208" expanded="true" signature="691:834" ph="{...}" />
-                    <marker date="1564666275208" expanded="true" signature="724:799" ph="{...}" />
-                    <marker date="1564666275208" expanded="true" signature="2872:8147" ph="{...}" />
-                    <marker date="1564666275208" expanded="true" signature="2887:2976" ph="/* check if raymarch metarial has been set. ... */" />
-                    <marker date="1564666275208" expanded="true" signature="3008:3256" ph="{...}" />
-                    <marker date="1564666275208" expanded="true" signature="3031:3178" ph="/* Copies source texture into destination render texture with a shader. ... */" />
-                    <marker date="1564666275208" expanded="true" signature="6639:6791" ph="/* Here we create the quad which represents our screen. ... */" />
-                    <marker date="1564666275208" expanded="true" signature="6845:7083" ph="/* Show skybox and standard unity scene meshes with raymarched shapes. ... */" />
-                    <marker date="1564666275208" expanded="true" signature="7450:7535" ph="/* We will start at the bottom left and move to each corner in sequence ... */" />
-                    <marker date="1564666275208" expanded="true" signature="7586:7778" ph="/* draw a vertex. ... */" />
-                    <marker date="1564666275208" expanded="true" signature="8153:9212" ph="/* Camera Frustum ... */" />
-                    <marker date="1564666275208" expanded="true" signature="9258:10252" ph="{...}" />
-                    <marker date="1564666275208" expanded="true" signature="9436:9538" ph="/* To get all corners of the frustum we create two vectors ... */" />
+                    <marker date="1569441977442" expanded="true" signature="6:78" ph="..." />
+                    <marker date="1569441977442" expanded="true" signature="180:10722" ph="{...}" />
+                    <marker date="1569441977442" expanded="true" signature="313:582" ph="{...}" />
+                    <marker date="1569441977442" expanded="true" signature="331:576" ph="{...}" />
+                    <marker date="1569441977442" expanded="true" signature="383:533" ph="{...}" />
+                    <marker date="1569441977442" expanded="true" signature="673:840" ph="{...}" />
+                    <marker date="1569441977442" expanded="true" signature="691:834" ph="{...}" />
+                    <marker date="1569441977442" expanded="true" signature="724:799" ph="{...}" />
+                    <marker date="1569441977442" expanded="true" signature="3075:8614" ph="{...}" />
+                    <marker date="1569441977442" expanded="true" signature="3090:3179" ph="/* check if raymarch metarial has been set. ... */" />
+                    <marker date="1569441977442" expanded="true" signature="3211:3459" ph="{...}" />
+                    <marker date="1569441977442" expanded="true" signature="3234:3381" ph="/* Copies source texture into destination render texture with a shader. ... */" />
+                    <marker date="1569441977442" expanded="true" signature="7106:7258" ph="/* Here we create the quad which represents our screen. ... */" />
+                    <marker date="1569441977442" expanded="true" signature="7312:7550" ph="/* Show skybox and standard unity scene meshes with raymarched shapes. ... */" />
+                    <marker date="1569441977442" expanded="true" signature="7917:8002" ph="/* We will start at the bottom left and move to each corner in sequence ... */" />
+                    <marker date="1569441977442" expanded="true" signature="8053:8245" ph="/* draw a vertex. ... */" />
+                    <marker date="1569441977442" expanded="true" signature="8620:9679" ph="/* Camera Frustum ... */" />
+                    <marker date="1569441977442" expanded="true" signature="9725:10719" ph="{...}" />
+                    <marker date="1569441977442" expanded="true" signature="9903:10005" ph="/* To get all corners of the frustum we create two vectors ... */" />
                   </folding>
                 </state>
               </provider>
@@ -54,18 +54,18 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Assets/Shaders/RaymarchShader.shader">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="640">
-                  <caret line="304" column="36" selection-start-line="304" selection-start-column="36" selection-end-line="304" selection-end-column="36" />
+                <state relative-caret-position="784">
+                  <caret line="313" column="32" selection-start-line="313" selection-start-column="32" selection-end-line="313" selection-end-column="32" />
                   <folding>
-                    <marker date="1564667474236" expanded="true" signature="32:16283" ph="{...}" />
-                    <marker date="1564667474236" expanded="true" signature="53:106" ph="{...}" />
-                    <marker date="1564667474236" expanded="true" signature="125:16281" ph="{...}" />
-                    <marker date="1564667474236" expanded="true" signature="221:16275" ph="{...}" />
-                    <marker date="1564667474236" expanded="true" signature="244:16260" ph="{...}" />
+                    <marker date="1569441977447" expanded="true" signature="32:19743" ph="{...}" />
+                    <marker date="1569441977447" expanded="true" signature="53:106" ph="{...}" />
+                    <marker date="1569441977447" expanded="true" signature="125:19741" ph="{...}" />
+                    <marker date="1569441977447" expanded="true" signature="221:19735" ph="{...}" />
+                    <marker date="1569441977447" expanded="true" signature="244:19720" ph="{...}" />
                   </folding>
                 </state>
               </provider>
@@ -109,25 +109,6 @@
         <option name="show-all-files" value="false" />
       </pane>
       <pane id="UnityExplorer">
-        <subPane>
-          <expand>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-            </path>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
-            </path>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-              <item name="Shaders" type="1045f7f1:UnityExplorerNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
         <option name="show-hidden-items" value="false" />
         <option name="show-project-names" value="true" />
       </pane>
@@ -179,11 +160,12 @@
       <option name="presentableId" value="Default" />
       <updated>1564655185753</updated>
       <workItem from="1564655189119" duration="7406000" />
+      <workItem from="1569442327292" duration="24000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7406000" />
+    <option name="totallyTimeSpent" value="7430000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -197,18 +179,9 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2062" height="1166" extended-state="6" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13030455" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13130304" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="NuGet" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Unity" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Unit Tests" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Performance Profiler" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -216,18 +189,27 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Errors In Solution" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Unit Tests Coverage" />
+      <window_info anchor="bottom" id="NuGet" order="7" />
+      <window_info anchor="bottom" id="Performance Profiler" order="8" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Unity" order="11" />
+      <window_info anchor="bottom" id="Database Changes" order="12" />
+      <window_info anchor="bottom" id="Unit Tests" order="13" />
+      <window_info anchor="bottom" id="Terminal" order="14" />
+      <window_info anchor="bottom" id="Event Log" order="15" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Errors In Solution" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="5" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -247,44 +229,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/RaymarchCamera.cs">
+    <entry file="file://$PROJECT_DIR$/Assets/Shaders/RaymarchShader.shader">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="141" column="67" selection-start-line="141" selection-start-column="67" selection-end-line="141" selection-end-column="67" />
+        <state relative-caret-position="784">
+          <caret line="313" column="32" selection-start-line="313" selection-start-column="32" selection-end-line="313" selection-end-column="32" />
           <folding>
-            <marker date="1564666275208" expanded="true" signature="6:78" ph="..." />
-            <marker date="1564666275208" expanded="true" signature="180:10255" ph="{...}" />
-            <marker date="1564666275208" expanded="true" signature="313:582" ph="{...}" />
-            <marker date="1564666275208" expanded="true" signature="331:576" ph="{...}" />
-            <marker date="1564666275208" expanded="true" signature="383:533" ph="{...}" />
-            <marker date="1564666275208" expanded="true" signature="673:840" ph="{...}" />
-            <marker date="1564666275208" expanded="true" signature="691:834" ph="{...}" />
-            <marker date="1564666275208" expanded="true" signature="724:799" ph="{...}" />
-            <marker date="1564666275208" expanded="true" signature="2872:8147" ph="{...}" />
-            <marker date="1564666275208" expanded="true" signature="2887:2976" ph="/* check if raymarch metarial has been set. ... */" />
-            <marker date="1564666275208" expanded="true" signature="3008:3256" ph="{...}" />
-            <marker date="1564666275208" expanded="true" signature="3031:3178" ph="/* Copies source texture into destination render texture with a shader. ... */" />
-            <marker date="1564666275208" expanded="true" signature="6639:6791" ph="/* Here we create the quad which represents our screen. ... */" />
-            <marker date="1564666275208" expanded="true" signature="6845:7083" ph="/* Show skybox and standard unity scene meshes with raymarched shapes. ... */" />
-            <marker date="1564666275208" expanded="true" signature="7450:7535" ph="/* We will start at the bottom left and move to each corner in sequence ... */" />
-            <marker date="1564666275208" expanded="true" signature="7586:7778" ph="/* draw a vertex. ... */" />
-            <marker date="1564666275208" expanded="true" signature="8153:9212" ph="/* Camera Frustum ... */" />
-            <marker date="1564666275208" expanded="true" signature="9258:10252" ph="{...}" />
-            <marker date="1564666275208" expanded="true" signature="9436:9538" ph="/* To get all corners of the frustum we create two vectors ... */" />
+            <marker date="1569441977447" expanded="true" signature="32:19743" ph="{...}" />
+            <marker date="1569441977447" expanded="true" signature="53:106" ph="{...}" />
+            <marker date="1569441977447" expanded="true" signature="125:19741" ph="{...}" />
+            <marker date="1569441977447" expanded="true" signature="221:19735" ph="{...}" />
+            <marker date="1569441977447" expanded="true" signature="244:19720" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Shaders/RaymarchShader.shader">
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/RaymarchCamera.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="304" column="36" selection-start-line="304" selection-start-column="36" selection-end-line="304" selection-end-column="36" />
+        <state relative-caret-position="3536">
+          <caret line="221" column="5" lean-forward="true" selection-start-line="221" selection-start-column="5" selection-end-line="221" selection-end-column="5" />
           <folding>
-            <marker date="1564667474236" expanded="true" signature="32:16283" ph="{...}" />
-            <marker date="1564667474236" expanded="true" signature="53:106" ph="{...}" />
-            <marker date="1564667474236" expanded="true" signature="125:16281" ph="{...}" />
-            <marker date="1564667474236" expanded="true" signature="221:16275" ph="{...}" />
-            <marker date="1564667474236" expanded="true" signature="244:16260" ph="{...}" />
+            <marker date="1569441977442" expanded="true" signature="6:78" ph="..." />
+            <marker date="1569441977442" expanded="true" signature="180:10722" ph="{...}" />
+            <marker date="1569441977442" expanded="true" signature="313:582" ph="{...}" />
+            <marker date="1569441977442" expanded="true" signature="331:576" ph="{...}" />
+            <marker date="1569441977442" expanded="true" signature="383:533" ph="{...}" />
+            <marker date="1569441977442" expanded="true" signature="673:840" ph="{...}" />
+            <marker date="1569441977442" expanded="true" signature="691:834" ph="{...}" />
+            <marker date="1569441977442" expanded="true" signature="724:799" ph="{...}" />
+            <marker date="1569441977442" expanded="true" signature="3075:8614" ph="{...}" />
+            <marker date="1569441977442" expanded="true" signature="3090:3179" ph="/* check if raymarch metarial has been set. ... */" />
+            <marker date="1569441977442" expanded="true" signature="3211:3459" ph="{...}" />
+            <marker date="1569441977442" expanded="true" signature="3234:3381" ph="/* Copies source texture into destination render texture with a shader. ... */" />
+            <marker date="1569441977442" expanded="true" signature="7106:7258" ph="/* Here we create the quad which represents our screen. ... */" />
+            <marker date="1569441977442" expanded="true" signature="7312:7550" ph="/* Show skybox and standard unity scene meshes with raymarched shapes. ... */" />
+            <marker date="1569441977442" expanded="true" signature="7917:8002" ph="/* We will start at the bottom left and move to each corner in sequence ... */" />
+            <marker date="1569441977442" expanded="true" signature="8053:8245" ph="/* draw a vertex. ... */" />
+            <marker date="1569441977442" expanded="true" signature="8620:9679" ph="/* Camera Frustum ... */" />
+            <marker date="1569441977442" expanded="true" signature="9725:10719" ph="{...}" />
+            <marker date="1569441977442" expanded="true" signature="9903:10005" ph="/* To get all corners of the frustum we create two vectors ... */" />
           </folding>
         </state>
       </provider>

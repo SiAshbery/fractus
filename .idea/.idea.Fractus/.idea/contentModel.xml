@@ -170,6 +170,7 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="AudioManager.cs" t="Include" />
           <e p="RaymarchCamera.cs" t="Include" />
           <e p="SceneViewFilter.cs" t="Include" />
         </e>
